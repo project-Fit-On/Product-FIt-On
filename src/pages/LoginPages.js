@@ -7,33 +7,36 @@ const LoginPage = () => {
     <div className="login-page">
       
       <div className="login-left">
-        
+        {/**  ********************************************************************** */}
         <div className="logo-area">
+          <div><img className="logo-img" src={Logo} alt="Fit-On Logo"/></div>
           <div className="logo-text">
             <p>Fit-on</p>
           </div>
-          <img className="logo-img" src={Logo}
-              alt="Fit-On Logo"/>
+            <div className="signup-link">
+             Don’t have an account? <a href="#sign-up">Sign Up!</a>
+           </div>
+        </div>
+          {/**  ********************************************************************** */}
+
+        <div className="login-greeting">
+            <h1>Welcome Back</h1>
+            <p>Login into your account</p>
+        </div>
+        {/**  ********************************************************************** */}
+        
+        <div className="social-logins">
+            <div className="button-group">
+              <button className="google-btn">Google</button>
+              <button className="facebook-btn">Facebook</button>
+             </div>
+            <div className="or-continue">Or continue with</div>
         </div>
 
-
-        
-        <div className="signup-link">
-          Don’t have an account? <a href="#sign-up">Sign Up!</a>
-        </div>
-
-        
+        {/**  ********************************************************************** */}
         <div className="login-content">
-          <h1>Welcome Back</h1>
-          <p>Login into your account</p>
 
           
-          <div className="social-login">
-            <button className="google-btn">Google</button>
-            <button className="facebook-btn">Facebook</button>
-          </div>
-
-          <div className="or-continue">Or continue with</div>
 
           
           <form className="login-form">
@@ -70,7 +73,7 @@ const LoginPage = () => {
         </div>
       </div>
 
-      {/* Right column (image / marketing text) */}
+      
       <div className="login-right">
         <img
           className="promo-image"
