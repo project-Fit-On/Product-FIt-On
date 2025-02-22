@@ -10,7 +10,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://*.partnersite1.com/*", "*://*.partnersite2.com/*"],
+      "matches": ["*://*.fashionbug.lk/*", "*://*.partnersite2.com/*"],
       "js": ["content.js"],
       "css": ["styles.css"]
     }

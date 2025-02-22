@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const statusElement = document.getElementById("status");
 
     if (
-      currentUrl.includes("partner-site1.com") ||
+      currentUrl.includes("fashionbug.lk") ||
       currentUrl.includes("partner-site2.com")
     ) {
       statusElement.textContent =

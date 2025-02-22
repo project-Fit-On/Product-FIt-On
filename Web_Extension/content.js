@@ -1,53 +1,52 @@
-// Function to extract product details based on partner website
+// Function to extract product details from the provided structure
 function extractProductDetails() {
-  // This will need customization based on partner site structure
-  // The selectors below are examples and should be adjusted for each partner
-
-  // Extract product name
   let productName = "";
-  const titleElement =
-    document.querySelector("h1.product-title") ||
-    document.querySelector(".product-name") ||
-    document.querySelector('[data-testid="product-title"]');
+  const titleElement = document.querySelector("h1.product_title.entry-title");
   if (titleElement) {
     productName = titleElement.textContent.trim();
   }
 
-  // Extract product image
   let productImage = "";
-  const imageElement =
-    document.querySelector(".product-image img") ||
-    document.querySelector(".main-product-image") ||
-    document.querySelector('[data-testid="product-image"]');
-  if (imageElement && imageElement.src) {
+  const imageElement = document.querySelector(
+    ".woocommerce-product-gallery__image a img"
+  );
+  if (imageElement && imageElement.getAttribute("data-src")) {
+    productImage = imageElement.getAttribute("data-src");
+  } else if (imageElement && imageElement.src) {
     productImage = imageElement.src;
   }
 
-  // Extract product description
   let productDesc = "";
-  const descElement =
-    document.querySelector(".product-description") ||
-    document.querySelector("#product-description") ||
-    document.querySelector('[data-testid="product-description"]');
+  const descElement = document.querySelector(
+    ".woocommerce-product-details__short-description"
+  );
   if (descElement) {
     productDesc = descElement.textContent.trim();
+  }
+
+  let productSizes = [];
+  const sizeElements = document.querySelectorAll(
+    ".single_variation_wrap select option"
+  );
+  if (sizeElements.length > 0) {
+    productSizes = Array.from(sizeElements)
+      .map((el) => el.textContent.trim())
+      .filter((size) => size.length > 0);
   }
 
   return {
     product: encodeURIComponent(productName),
     image: encodeURIComponent(productImage),
     desc: encodeURIComponent(productDesc.substring(0, 200)), // Limit description length
+    sizes: encodeURIComponent(productSizes.join(",")), // Join sizes as a comma-separated string
   };
 }
 
 // Function to create and inject the Try 3D button
 function injectTry3DButton() {
-  // Find a suitable location to inject the button
-  // This will vary by partner site, so adapt as needed
-  const addToCartButton =
-    document.querySelector(".add-to-cart") ||
-    document.querySelector("#add-to-cart") ||
-    document.querySelector('[data-testid="add-to-cart-button"]');
+  const addToCartButton = document.querySelector(
+    ".single_add_to_cart_button.button.alt"
+  );
 
   if (!addToCartButton) {
     console.error(
@@ -56,22 +55,20 @@ function injectTry3DButton() {
     return;
   }
 
+  // Ensure the button isn't added multiple times
+  if (document.querySelector(".try-3d-button")) return;
+
   // Create the Try 3D button
   const try3DButton = document.createElement("button");
   try3DButton.className = "try-3d-button";
   try3DButton.innerHTML = "Try 3D";
+  try3DButton.style.cssText =
+    "background: #28a745; color: white; padding: 10px 20px; margin-left: 10px; border: none; cursor: pointer; font-size: 14px; display: block; margin-top: 10px;";
 
-  // Add click event listener
   try3DButton.addEventListener("click", function (event) {
     event.preventDefault();
-
-    // Extract product details
     const productDetails = extractProductDetails();
-
-    // Construct the URL for redirection
-    const redirectURL = `https://your-site.com/try3d?product=${productDetails.product}&image=${productDetails.image}&desc=${productDetails.desc}`;
-
-    // Redirect to your site
+    const redirectURL = `https://your-site.com/try3d?product=${productDetails.product}&image=${productDetails.image}&desc=${productDetails.desc}&sizes=${productDetails.sizes}`;
     window.location.href = redirectURL;
   });
 
@@ -80,9 +77,33 @@ function injectTry3DButton() {
     try3DButton,
     addToCartButton.nextSibling
   );
+  console.log("Try 3D button injected successfully");
+}
+
+// Function to wait for elements using MutationObserver
+function observeAndInjectButton() {
+  const observer = new MutationObserver((mutations, observerInstance) => {
+    const addToCartButton = document.querySelector(
+      ".single_add_to_cart_button.button.alt"
+    );
+
+    if (addToCartButton) {
+      injectTry3DButton();
+      observerInstance.disconnect(); // Stop observing once button is added
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
 }
 
 // Initialize when the page is fully loaded
 window.addEventListener("load", function () {
-  setTimeout(injectTry3DButton, 1000); // Small delay to ensure all elements are loaded
+  console.log("Page loaded, trying to inject button...");
+  setTimeout(() => {
+    if (!document.querySelector(".try-3d-button")) {
+      injectTry3DButton();
+    }
+  }, 2000); // Wait 2 seconds for dynamic content
+
+  observeAndInjectButton(); // Start observing for dynamic elements
 });
