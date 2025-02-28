@@ -255,3 +255,19 @@ if __name__ == "__main__":
         print(f"📏 Stomach-to-Back: {stomach_back_m:.2f} m")
     else:
         print("⚠️ Stomach-to-back distance not detected.")
+
+        # Get original dimensions
+        height, width = front_image.shape[:2]
+
+        # Resize to a quarter of original dimensions
+        new_size = (width // 2, height // 2)
+
+        # Resize images
+        front_image_resized = cv2.resize(front_image, new_size)
+        side_image_resized = cv2.resize(side_image, new_size)
+
+        # Display resized images
+        cv2.imshow("Resized Front View", front_image_resized)
+        cv2.imshow("Resized Side View", side_image_resized)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
