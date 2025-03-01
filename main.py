@@ -1,3 +1,5 @@
+import json
+
 import cv2
 from face_analysis import estimate_distance_from_eyes
 from pose_analysis import measure_front_view, measure_side_view
@@ -15,3 +17,18 @@ print(f"📏 Shoulder Width: {shoulder_m:.2f} m" if shoulder_m else "⚠️ Shou
 print(f"📏 Waist Width: {waist_m:.2f} m" if waist_m else "⚠️ Waist width not detected.")
 print(f"📏 Height: {height_m:.2f} m" if height_m else "⚠️ Height not detected.")
 print(f"📏 Stomach-to-Back: {stomach_back_m:.2f} m" if stomach_back_m else "⚠️ Stomach-to-back not detected.")
+
+measurement_data = {
+    "depth_estimated": depth_est,
+    "shoulder_width_m": shoulder_m if shoulder_m else None,
+    "waist_width_m": waist_m if waist_m else None,
+    "height_m": height_m if height_m else None,
+    "stomach_to_back_m": stomach_back_m if stomach_back_m else None
+}
+
+# Save to JSON file
+json_filename = "measurements.json"
+with open(json_filename, "w") as json_file:
+    json.dump(measurement_data, json_file, indent=4)
+
+print(f"📂 Measurements saved to {json_filename}")
