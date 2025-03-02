@@ -4,6 +4,7 @@ import cv2
 from face_analysis import estimate_distance_from_eyes
 from pose_analysis import measure_front_view, measure_side_view
 
+gender = "male"
 front_image = cv2.imread("front_view.jpg")
 side_image = cv2.imread("side_view.jpg")
 
@@ -19,6 +20,7 @@ print(f"📏 Height: {height_m:.2f} m" if height_m else "⚠️ Height not detec
 print(f"📏 Stomach-to-Back: {stomach_back_m:.2f} m" if stomach_back_m else "⚠️ Stomach-to-back not detected.")
 
 measurement_data = {
+    "gender":gender,
     "depth_estimated": depth_est,
     "shoulder_width_m": shoulder_m if shoulder_m else None,
     "waist_width_m": waist_m if waist_m else None,
