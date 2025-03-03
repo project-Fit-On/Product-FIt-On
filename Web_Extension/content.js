@@ -68,7 +68,7 @@ function injectTry3DButton() {
   try3DButton.addEventListener("click", function (event) {
     event.preventDefault();
     const productDetails = extractProductDetails();
-    const redirectURL = `https://your-site.com/try3d?product=${productDetails.product}&image=${productDetails.image}&desc=${productDetails.desc}&sizes=${productDetails.sizes}`;
+    const redirectURL = `https://myfiton.com/try3d?product=${productDetails.product}&image=${productDetails.image}&desc=${productDetails.desc}&sizes=${productDetails.sizes}`;
     window.location.href = redirectURL;
   });
 
