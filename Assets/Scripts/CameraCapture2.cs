@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.IO;
 
-public class CameraCapture : MonoBehaviour
+public class CameraCapture2 : MonoBehaviour
 {
     public RawImage cameraPreview;
     public GameObject previewPanel;
@@ -115,7 +115,7 @@ public class CameraCapture : MonoBehaviour
 
     private void SavePhoto(Texture2D photo)
     {
-        string fileName = "Photo1.png";
+        string fileName = "Photo2.png";
         byte[] imageBytes = photo.EncodeToPNG();
         string path = Path.Combine(Application.persistentDataPath, fileName);
 
