@@ -41,3 +41,63 @@ with open(json_filename, "w") as json_file:
 
 print(f"📂 Measurements saved to {json_filename}")
 
+# Load JSON data
+json_path = r"C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\measurements.json"
+with open(json_path, 'r') as file:
+    body_data = json.load(file)
+
+# Get the human model
+# Check if "Cube" exists in the scene
+if "Cube" in bpy.data.objects:
+    cube = bpy.data.objects["Cube"]
+    bpy.data.objects.remove(cube, do_unlink=True)
+    print("✅ Deleted the Cube!")
+else:
+    print("❌ Cube not found!")
+
+import_path = r"C:\Users\senir\Desktop\Blender\Male.fbx"
+bpy.ops.import_scene.fbx(filepath=import_path)
+obj = bpy.data.objects.get("Human")  # Ensure the model name matches the one in Blender
+if obj:
+    bpy.context.view_layer.objects.active = obj
+    obj.select_set(True)
+
+    # Enable Edit Mode
+    bpy.ops.object.mode_set(mode='EDIT')
+
+    # Access the vertex groups
+    vgroups = obj.vertex_groups
+
+    # Height Adjustment (Scaling Along Z-axis)
+    height_factor = body_data["height_m"] / 1.75  # Assuming default model height is ~1.7m
+    obj.scale.x *= height_factor   # Scale width-wise
+    obj.scale.y *= height_factor   # Scale depth-wise
+    obj.scale.z *= height_factor
+
+    # Shoulder Width Adjustment (Scaling Along X-axis)
+    shoulder_factor = body_data["shoulder_width_m"] / 0.35  # Assuming default shoulder width ~0.35m
+    if "shoulder01.L" in vgroups and "shoulder01.R" in vgroups:
+        bpy.ops.transform.resize(value=(shoulder_factor, 1, 1))
+
+    # Waist Width Adjustment (Scaling Along X-axis)
+    waist_factor = body_data["waist_width_m"] / 0.2  # Assuming default waist width ~0.2m
+    if "spine01" in vgroups:
+        bpy.ops.transform.resize(value=(waist_factor, 1, 1))
+
+    # Stomach Depth Adjustment (Scaling Along Y-axis)
+    depth_factor = body_data["stomach_to_back_m"] / 0.5  # Assuming default depth ~0.5m
+    if "spine01" in vgroups:
+        bpy.ops.transform.resize(value=(1, depth_factor, 1))
+
+    # Return to Object Mode
+    bpy.ops.object.mode_set(mode='OBJECT')
+
+    # Export the adjusted model
+    export_path = r"C:\Users\senir\Desktop\optimized_model.obj"
+    bpy.ops.wm.obj_export(filepath=export_path)
+    print(f"✅ Model exported to {export_path}")
+
+    print("Model updated successfully based on JSON values.")
+else:
+    print("Error: Human model not found in Blender.")
+
