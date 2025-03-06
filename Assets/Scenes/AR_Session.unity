@@ -1129,7 +1129,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 713410695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c9c873f0ae6b4a09908d4a1d7865c31, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ea9e4b78f56b4582a47c5d0770ee6f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   photoPreviewUI: {fileID: 474788079}
@@ -2771,7 +2771,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1521423906
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3080,7 +3080,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 713410697}
-        m_TargetAssemblyTypeName: Native_Camera, Assembly-CSharp
+        m_TargetAssemblyTypeName: Native_Camera2, Assembly-CSharp
         m_MethodName: OnTakePhotoButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -3773,7 +3773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1904414112
 RectTransform:
   m_ObjectHideFlags: 0

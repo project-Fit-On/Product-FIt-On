@@ -6,13 +6,13 @@ using System.IO;
 // Import the plugin’s namespace
 using NativeCameraNamespace;
 
-public class Native_Camera : MonoBehaviour
+public class Native_Camera2 : MonoBehaviour
 {
     public RawImage photoPreviewUI; // optional, if you want to preview the photo in a UI
     public int maxPhotoSize = 2048; // maximum dimension for the loaded Texture2D
 
     // We'll track how many photos have been taken so we can name them image1, image2, etc.
-    private int photoCount = 0;
+    private int photoCount = 1;
 
     public void OnTakePhotoButtonClicked()
     {
