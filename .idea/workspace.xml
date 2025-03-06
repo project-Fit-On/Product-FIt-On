@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0154117e-56c6-4313-b666-ccf46ea062eb" name="Changes" comment="Minor Changes">
-      <change afterPath="$PROJECT_DIR$/src/DefaultModel/Female.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DefaultModel/Male.fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera_specs.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera_specs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API calls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741290376578</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Minor Changes">
+      <option name="closed" value="true" />
+      <created>1741291027940</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1741291027940</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
