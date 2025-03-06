@@ -32,11 +32,11 @@ def verify_api_key(api_key: str):
 
 
 # Upload images endpoint
-@app.post("/uploadFrontView")
+@app.post("/upload/frontView")
 async def upload_front_images(
         front_view: UploadFile = File(...),
 ):
-    print("✅ POST request received on /upload")
+    print("POST request received on /upload")
     allowed_extensions = {".jpg", ".jpeg", ".png"}
     if not (front_view.filename.endswith(tuple(allowed_extensions))):
         return {"error": "Only JPG and PNG files are allowed"}
@@ -49,7 +49,7 @@ async def upload_front_images(
 @app.post("/upload/sideView")
 async def upload_side_images(
         side_view: UploadFile = File(...)):
-    print("✅ POST request received on /upload")
+    print("POST request received on /upload")
     allowed_extensions = {".jpg", ".jpeg", ".png"}
     if not ( side_view.filename.endswith(tuple(allowed_extensions))):
         return {"error": "Only JPG and PNG files are allowed"}
@@ -62,7 +62,7 @@ async def upload_side_images(
 @app.post("/upload/gender")
 async def upload_side_images(
         Gender: str = Form(...)):
-    print("✅ POST request received on /upload")
+    print("POST request received on /upload")
     setGender(Gender)
     return {"message": "Gender uploaded successfully","Gender": str(Gender)}
 

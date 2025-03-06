@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0154117e-56c6-4313-b666-ccf46ea062eb" name="Changes" comment="Major changes in the local server">
+    <list default="true" id="0154117e-56c6-4313-b666-ccf46ea062eb" name="Changes" comment="Minor Changes">
+      <change afterPath="$PROJECT_DIR$/src/DefaultModel/Female.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DefaultModel/Male.fbx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blender.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blender.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/camera_specs.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera_specs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/face_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/face_analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_view.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pose_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pose_analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/side_view.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestServer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/camera_specs.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera_specs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,17 +59,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.camera_specs.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;imageProcessing&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Blender Foundation/Blender 4.3/4.3/python/bin&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.camera_specs.executor": "Run",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ToolWindowRun.ShowToolbar": "false",
+    "git-widget-placeholder": "imageProcessing",
+    "last_opened_file_path": "C:/Users/senir/Desktop/Product-FIt-On-imageProcessing/src",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\src" />
+      <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\Core" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="imageProcessing" />
@@ -211,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741289731651</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Minor Changes">
+      <option name="closed" value="true" />
+      <created>1741290376578</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1741290376578</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -220,6 +232,7 @@
     <MESSAGE value="Added 3d model creation" />
     <MESSAGE value="Implemented a local server" />
     <MESSAGE value="Major changes in the local server" />
-    <option name="LAST_COMMIT_MESSAGE" value="Major changes in the local server" />
+    <MESSAGE value="Minor Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Changes" />
   </component>
 </project>

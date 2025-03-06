@@ -12,8 +12,8 @@ def setGender(gender):
 def modelCreation():
     # Load images
 
-    front_image = cv2.imread(r"/uploads/front_view.jpg")
-    side_image = cv2.imread(r"/uploads/side_view.jpg")
+    front_image = cv2.imread(r"uploads\front_view.jpg")
+    side_image = cv2.imread(r"uploads\side_view.jpg")
 
     # Estimate depth from eyes
     depth_est = estimate_distance_from_eyes(front_image) or 2.0
@@ -46,7 +46,7 @@ def modelCreation():
     print(f" Measurements saved to {json_filename}")
 
     # Load JSON data
-    json_path = r"/src/measurements.json"
+    json_path = "measurements.json"
     with open(json_path, 'r') as file:
         body_data = json.load(file)
 
@@ -65,10 +65,10 @@ def modelCreation():
 
 
     if body_data["gender"] == "male":
-        import_path = r"/DefaultModel/Male.fbx"
+        import_path = r"DefaultModel\Male.fbx"
         bpy.ops.import_scene.fbx(filepath=import_path)
     elif body_data["gender"] == "female":
-        import_path = r"/DefaultModel/Female.fbx"
+        import_path = r"DefaultModel\Female.fbx"
         bpy.ops.import_scene.fbx(filepath=import_path)
 
     obj = bpy.data.objects.get("Human")  # Ensure the model name matches the one in Blender
@@ -101,7 +101,7 @@ def modelCreation():
         #     bpy.ops.transform.resize(value=(1, depth_factor, 1))
 
         # Export the adjusted model
-        export_path = r"/exports/optimized_model.fbx"
+        export_path = r"exports\optimized_model.fbx"
         bpy.ops.export_scene.fbx(filepath=export_path)
         print(f"Model exported to {export_path}")
 
