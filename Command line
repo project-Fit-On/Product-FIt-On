@@ -3,3 +3,5 @@ pip install opencv-python-headless
 pip install mediapipe
 pip install numpy
 pip install piexif
+pip install python-multipart
+

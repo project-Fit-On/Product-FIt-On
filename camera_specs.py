@@ -57,7 +57,7 @@ FOCAL_LENGTH_X_PIXELS = (FOCAL_LENGTH_MM / SENSOR_WIDTH_MM) * IMAGE_WIDTH_PIXELS
 FOCAL_LENGTH_Y_PIXELS = (FOCAL_LENGTH_MM / SENSOR_HEIGHT_MM) * IMAGE_HEIGHT_PIXELS
 
 # Output results
-print(f"Image Resolution: {IMAGE_WIDTH_PIXELS}x{IMAGE_HEIGHT_PIXELS}")
-print(f"Computed Focal Length (mm): {FOCAL_LENGTH_MM:.2f}")
-print(f"Focal Length in X Pixels: {FOCAL_LENGTH_X_PIXELS:.2f}")
-print(f"Focal Length in Y Pixels: {FOCAL_LENGTH_Y_PIXELS:.2f}")
+# print(f"Image Resolution: {IMAGE_WIDTH_PIXELS}x{IMAGE_HEIGHT_PIXELS}")
+# print(f"Computed Focal Length (mm): {FOCAL_LENGTH_MM:.2f}")
+# print(f"Focal Length in X Pixels: {FOCAL_LENGTH_X_PIXELS:.2f}")
+# print(f"Focal Length in Y Pixels: {FOCAL_LENGTH_Y_PIXELS:.2f}")

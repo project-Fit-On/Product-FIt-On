@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0154117e-56c6-4313-b666-ccf46ea062eb" name="Changes" comment="Added 3d model creation">
-      <change afterPath="$PROJECT_DIR$/Service.py" afterDir="false" />
+    <list default="true" id="0154117e-56c6-4313-b666-ccf46ea062eb" name="Changes" comment="Implemented a local server">
+      <change afterPath="$PROJECT_DIR$/TestServer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command line" beforeDir="false" afterPath="$PROJECT_DIR$/Command line" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service.py" beforeDir="false" afterPath="$PROJECT_DIR$/Service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_specs.py" beforeDir="false" afterPath="$PROJECT_DIR$/camera_specs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,17 +59,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.camera_specs.executor": "Run",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "ToolWindowRun.ShowToolbar": "false",
-    "git-widget-placeholder": "imageProcessing",
-    "last_opened_file_path": "C:/Program Files/Blender Foundation/Blender 4.3/4.3/python/bin",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.camera_specs.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;imageProcessing&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Blender Foundation/Blender 4.3/4.3/python/bin&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="imageProcessing" />
@@ -187,13 +190,22 @@
       <option name="project" value="LOCAL" />
       <updated>1741186560241</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Implemented a local server">
+      <option name="closed" value="true" />
+      <created>1741189254308</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1741189254308</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Commit" />
     <MESSAGE value="Added 3d model creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added 3d model creation" />
+    <MESSAGE value="Implemented a local server" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented a local server" />
   </component>
 </project>

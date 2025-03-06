@@ -9,6 +9,9 @@ from pydantic import BaseModel
 from typing import Optional
 import secrets
 from pathlib import Path
+
+from starlette.responses import FileResponse
+
 from face_analysis import estimate_distance_from_eyes
 from pose_analysis import measure_front_view, measure_side_view
 
@@ -97,6 +100,7 @@ def process_images(
         cube = bpy.data.objects["Cube"]
         bpy.data.objects.remove(cube, do_unlink=True)
 
+
     import_path = (Path("C:/Users/senir/Desktop/Blender/Male.fbx") if gender == "male"
                    else Path("C:/Users/senir/Desktop/Blender/Female.fbx"))
     bpy.ops.import_scene.fbx(filepath=str(import_path))
@@ -105,7 +109,6 @@ def process_images(
     if obj:
         bpy.context.view_layer.objects.active = obj
         obj.select_set(True)
-        bpy.ops.object.mode_set(mode='EDIT')
 
         height_factor = measurement_data["height_m"] / 1.75
         obj.scale.x *= height_factor
@@ -119,8 +122,6 @@ def process_images(
 
     raise HTTPException(status_code=500, detail="Blender processing failed")
 
-
-
 # Get exported 3D model
 @app.get("/download")
 def download_model(api_key: str = Depends(verify_api_key)):
@@ -129,7 +130,7 @@ def download_model(api_key: str = Depends(verify_api_key)):
     if not export_path.exists():
         raise HTTPException(status_code=404, detail="3D model not found")
 
-    return {"message": "Model ready for download", "download_path": str(export_path)}
+    return FileResponse(path=export_path, filename="optimized_model.fbx", media_type="application/octet-stream")
 
 
 
