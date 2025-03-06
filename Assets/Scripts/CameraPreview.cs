@@ -16,7 +16,7 @@ public class CameraPreview : MonoBehaviour
             var deviceName = WebCamTexture.devices[0].name;
 
             // Create WebCamTexture
-            webCamTex = new WebCamTexture(deviceName);
+            webCamTex = new WebCamTexture(deviceName, 1920, 1080, 30);
 
             // Assign to RawImage
             rawImage.texture = webCamTex;
