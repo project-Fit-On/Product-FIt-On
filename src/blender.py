@@ -4,7 +4,7 @@ import pyautogui
 
 add_on_path = r"C:\Users\senir\Downloads\mpfb2-master.zip"
 
-with open(r"C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\measurements.json", "r") as file:
+with open(r"/measurements.json", "r") as file:
     data = json.load(file)
 
 print(data)

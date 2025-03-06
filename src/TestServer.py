@@ -1,18 +1,10 @@
-import os
-import json
 import shutil
 import uvicorn
-import bpy
-import cv2
-from fastapi import FastAPI, File, UploadFile, HTTPException, Depends,Form
-from pydantic import BaseModel
-from typing import Optional
+from fastapi import FastAPI, File, UploadFile, HTTPException, Form
 import secrets
 from pathlib import Path
 from starlette.responses import FileResponse
-from face_analysis import estimate_distance_from_eyes
 from main import modelCreation
-from pose_analysis import measure_front_view, measure_side_view
 from main import setGender
 
 # Create FastAPI instance

@@ -302,7 +302,7 @@ bpy.ops.wm.save_userpref()
 # bpy.ops.wm.obj_import(filepath=import_path)
 
 # Load JSON data
-json_path = r"C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\measurements.json"
+json_path = r"/src/measurements.json"
 with open(json_path, "r") as file:
     data = json.load(file)
 
@@ -310,7 +310,7 @@ print("📥 Loaded measurement data:", data)
 
 bpy.ops.preferences.addon_enable(module="bl_ext.user_default.mpfb")
 # Load JSON data
-with open(r"C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\measurements.json", "r") as file:
+with open(r"/src/measurements.json", "r") as file:
     data = json.load(file)
 
 print(data)
