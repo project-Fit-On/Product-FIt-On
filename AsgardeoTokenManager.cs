@@ -4,8 +4,8 @@ using System.Collections;
 
 public class AsgardeoTokenManager : MonoBehaviour
 {
-    private string tokenUrl = "https://api.asgardeo.io/t/YOUR_TENANT/oauth2/token";
-    private string clientId = "YOUR_CLIENT_ID";
+    private string tokenUrl = "https://api.asgardeo.io/t/fit0n/oauth2/token";
+    private string clientId = "BmzBKJCTzV6gPotwODfyGAcrHp4a";
     private string redirectUri = "com.fitton://oauth2redirect";
     private string codeVerifier;
     
@@ -36,4 +36,6 @@ public class AsgardeoTokenManager : MonoBehaviour
         }
     }
 }
+
+
 
