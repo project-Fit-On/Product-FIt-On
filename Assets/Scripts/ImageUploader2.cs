@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class ImageUploader2 : MonoBehaviour
 {
     // API Endpoint
-    private string uploadUrl = "https://my-vercel-api.vercel.app/api/uploadPhoto";
+    private string uploadUrl = "https://api-nine-umber.vercel.app/api/uploadphoto";
 
     // Start the upload process
     public void UploadImages()
