@@ -221,7 +221,7 @@ const HowItWorks = () => {
             </div>
             <div className={styles.imageContainer}>
               <img
-                src="/img/virtual-profile.webp"
+                src="/img/how1.gif"
                 alt="Create Virtual Profile"
                 className={styles.sectionImage}
               />
