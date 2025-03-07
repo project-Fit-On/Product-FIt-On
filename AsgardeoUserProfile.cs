@@ -4,7 +4,7 @@ using System.Collections;
 
 public class AsgardeoUserProfile : MonoBehaviour
 {
-    private string userInfoUrl = "https://api.asgardeo.io/t/YOUR_TENANT/oauth2/userinfo";
+    private string userInfoUrl = "https://api.asgardeo.io/t/fit0n/oauth2/userinfo";
 
     public IEnumerator GetUserProfile(string accessToken)
     {
