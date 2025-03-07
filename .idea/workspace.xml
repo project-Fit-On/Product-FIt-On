@@ -5,8 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0154117e-56c6-4313-b666-ccf46ea062eb" name="Changes" comment="Minor Changes">
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/API calls" beforeDir="false" afterPath="$PROJECT_DIR$/API calls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Command line" beforeDir="false" afterPath="$PROJECT_DIR$/Command line" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/DefaultModel/Female.obj" beforeDir="false" afterPath="$PROJECT_DIR$/DefaultModel/Female.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/DefaultModel/Male.obj" beforeDir="false" afterPath="$PROJECT_DIR$/DefaultModel/Male.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Service.py" beforeDir="false" afterPath="$PROJECT_DIR$/Service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/TestServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestServer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/camera_specs.py" beforeDir="false" afterPath="$PROJECT_DIR$/camera_specs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/face_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/face_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/measurements.json" beforeDir="false" afterPath="$PROJECT_DIR$/measurements.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/pose_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/pose_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/uploads/front_view.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/front_view.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/uploads/side_view.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/side_view.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +109,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\api\main.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -408,7 +423,23 @@
       <option name="project" value="LOCAL" />
       <updated>1741359328325</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Minor Changes">
+      <option name="closed" value="true" />
+      <created>1741359574326</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1741359574326</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Minor Changes">
+      <option name="closed" value="true" />
+      <created>1741359683643</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1741359683643</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
