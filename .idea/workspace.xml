@@ -5,24 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0154117e-56c6-4313-b666-ccf46ea062eb" name="Changes" comment="Minor Changes">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/api/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API calls" beforeDir="false" afterPath="$PROJECT_DIR$/api/API calls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command line" beforeDir="false" afterPath="$PROJECT_DIR$/api/Command line" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DefaultModel/Female.obj" beforeDir="false" afterPath="$PROJECT_DIR$/api/DefaultModel/Female.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DefaultModel/Male.obj" beforeDir="false" afterPath="$PROJECT_DIR$/api/DefaultModel/Male.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/api/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/Service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/TestServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blender.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/camera_specs.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/camera_specs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/face_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/face_analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/measurements.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/measurements.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pose_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/pose_analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/front_view.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/api/uploads/front_view.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/side_view.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/api/uploads/side_view.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/test.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -367,7 +351,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741348954866</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Minor Changes">
+      <option name="closed" value="true" />
+      <created>1741349924251</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1741349924251</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
