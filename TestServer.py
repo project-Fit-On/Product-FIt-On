@@ -43,7 +43,7 @@ async def upload_front_images(
     allowed_extensions = {".jpg", ".jpeg", ".png"}
     if not (front_view.filename.endswith(tuple(allowed_extensions))):
         return {"error": "Only JPG and PNG files are allowed"}
-    front_path = UPLOAD_FOLDER / front_view.filename
+    front_path = UPLOAD_FOLDER / "front_view.jpg"
 
     with open(front_path, "wb") as buffer:
         shutil.copyfileobj(front_view.file, buffer)
@@ -56,7 +56,7 @@ async def upload_side_images(
     allowed_extensions = {".jpg", ".jpeg", ".png"}
     if not ( side_view.filename.endswith(tuple(allowed_extensions))):
         return {"error": "Only JPG and PNG files are allowed"}
-    side_path = UPLOAD_FOLDER / side_view.filename
+    side_path = UPLOAD_FOLDER / "side_view.jpg"
     with open(side_path, "wb") as buffer:
         shutil.copyfileobj(side_view.file, buffer)
 

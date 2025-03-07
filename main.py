@@ -24,10 +24,10 @@ def modelCreation():
     height_m, stomach_back_m = measure_side_view(side_image, depth_est)
 
     # Print measurement results
-    print(f"📏 Shoulder Width: {shoulder_m:.2f} m" if shoulder_m else " Shoulder width not detected.")
-    print(f"📏 Waist Width: {waist_m:.2f} m" if waist_m else " Waist width not detected.")
-    print(f"📏 Height: {height_m:.2f} m" if height_m else "️ Height not detected.")
-    print(f"📏 Stomach-to-Back: {stomach_back_m:.2f} m" if stomach_back_m else " Stomach-to-back not detected.")
+    print(f" Shoulder Width: {shoulder_m:.2f} m" if shoulder_m else " Shoulder width not detected.")
+    print(f" Waist Width: {waist_m:.2f} m" if waist_m else " Waist width not detected.")
+    print(f" Height: {height_m:.2f} m" if height_m else "️ Height not detected.")
+    print(f" Stomach-to-Back: {stomach_back_m:.2f} m" if stomach_back_m else " Stomach-to-back not detected.")
 
     # Save measurements to JSON
     measurement_data = {
@@ -58,9 +58,9 @@ def modelCreation():
 
     try:
         mesh = trimesh.load_mesh(model_path)
-        print(f"✅ Successfully loaded model: {model_path}")
+        print(f" Successfully loaded model: {model_path}")
     except Exception as e:
-        print(f"❌ Error loading model: {e}")
+        print(f" Error loading model: {e}")
         return
 
     # Apply transformations based on measurements
@@ -71,7 +71,7 @@ def modelCreation():
     # Export the adjusted model
     export_path = "exports/optimized_model.obj"
     mesh.export(export_path)
-    print(f"✅ Model exported to {export_path}")
+    print(f" Model exported to {export_path}")
 
-    print("🎉 Model updated successfully based on JSON values.")
+    print(" Model updated successfully based on JSON values.")
 
