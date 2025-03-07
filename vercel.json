@@ -1,9 +1,14 @@
 {
-  "version": 2,
   "builds": [
-    { "src": "TestServer.py", "use": "@vercel/python" }
+    {
+      "src": "api/TestServer.py",
+      "use": "@vercel/python"
+    }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "TestServer.py" }
+    {
+      "src": "/(.*)",
+      "dest": "api/TestServer.py"
+    }
   ]
 }

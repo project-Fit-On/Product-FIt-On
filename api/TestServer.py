@@ -7,9 +7,11 @@ from pathlib import Path
 from starlette.responses import FileResponse
 from main import modelCreation
 from main import setGender
+from mangum import Mangum
 
 # Create FastAPI instance
 app = FastAPI()
+handler = Mangum(app)
 
 # Store API keys (In production, store securely in a database or environment variable)
 API_KEYS = {"user1": secrets.token_hex(16)}
@@ -86,5 +88,6 @@ def download_model():
 
 
 # Run the server
-def handler(event, context):
-    return app
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))  # Railway assigns a dynamic port
+    uvicorn.run(app, host="0.0.0.0", port=port)
