@@ -86,7 +86,7 @@ def download_model():
     return FileResponse(path=export_path, filename="optimized_model.fbx", media_type="application/octet-stream")
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", 8080))  # Default to 8080
+    port = int(os.getenv("PORT", 8080))  # Cloud Run provides PORT automatically
     uvicorn.run(app, host="0.0.0.0", port=port)
 
 
