@@ -254,7 +254,7 @@ const HowItWorks = () => {
             </div>
             <div className={styles.imageContainer}>
               <img
-                src="/img/try-on-digitally.webp"
+                src="/img/how2.gif"
                 alt="Try On Digitally"
                 className={styles.sectionImage}
               />
@@ -284,7 +284,7 @@ const HowItWorks = () => {
             </div>
             <div className={styles.imageContainer}>
               <img
-                src="/img/shop-confidence.webp"
+                src="/img/how3.gif"
                 alt="Shop with Confidence"
                 className={styles.sectionImage}
               />
