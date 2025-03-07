@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0154117e-56c6-4313-b666-ccf46ea062eb" name="Changes" comment="Minor Changes">
-      <change afterPath="$PROJECT_DIR$/src/vercel.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestServer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,15 +61,17 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;imageProcessing&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/senir/Desktop/Product-FIt-On-imageProcessing/src&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/senir/Desktop/Product-FIt-On-imageProcessing&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing" />
       <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing" />
       <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\src" />
       <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\Core" />
     </key>
@@ -90,7 +90,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\src\main.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -236,7 +236,31 @@
       <option name="project" value="LOCAL" />
       <updated>1741291422679</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Minor Changes">
+      <option name="closed" value="true" />
+      <created>1741332899148</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1741332899148</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Minor Changes">
+      <option name="closed" value="true" />
+      <created>1741332967284</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1741332967284</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Minor Changes">
+      <option name="closed" value="true" />
+      <created>1741333250089</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1741333250089</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
