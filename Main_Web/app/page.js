@@ -1,6 +1,7 @@
 import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import HowItWorks from "./Pages/HowItWorks";
 
 export default function Home() {
   return (
@@ -34,6 +35,9 @@ export default function Home() {
           /> */}
         </div>
       </section>
+
+      {/* Add the HowItWorks component here */}
+      <HowItWorks />
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
+// Fix the import path - assuming HowItWorks is in the same directory
+import HowItWorks from "./HowItWorks";
 
 export default function Home() {
   return (
@@ -37,6 +39,7 @@ export default function Home() {
             {/* This div will be styled with the fashion illustration */}
           </div>
         </section>
+        <HowItWorks />
       </main>
     </div>
   );

@@ -19,6 +19,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <title>Fit-On - Try Before You Buy</title>
+        <meta
+          name="description"
+          content="Personalized Fashion at Your Fingertips"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>
