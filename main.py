@@ -1,5 +1,5 @@
 import json
-import bpy
+import trimesh
 import cv2
 from face_analysis import estimate_distance_from_eyes
 from pose_analysis import measure_front_view, measure_side_view
@@ -50,62 +50,28 @@ def modelCreation():
     with open(json_path, 'r') as file:
         body_data = json.load(file)
 
-    # Get the human model
-    # Check if "Cube" exists in the scene
-    if "Cube" in bpy.data.objects:
-        cube = bpy.data.objects["Cube"]
-        bpy.data.objects.remove(cube, do_unlink=True)
-        print("Deleted the Cube!")
-    else:
-        print("Cube not found!")
-
-    for obj in bpy.data.objects:
-        if obj.type in {'CAMERA', 'LIGHT'}:
-            bpy.data.objects.remove(obj, do_unlink=True)
-
-
+    # Load the human model using Trimesh
     if body_data["gender"] == "male":
-        import_path = r"DefaultModel/Male.fbx"
-        bpy.ops.import_scene.fbx(filepath=import_path)
-    elif body_data["gender"] == "female":
-        import_path = r"DefaultModel/Female.fbx"
-        bpy.ops.import_scene.fbx(filepath=import_path)
-
-    obj = bpy.data.objects.get("Human")  # Ensure the model name matches the one in Blender
-    if obj:
-        bpy.context.view_layer.objects.active = obj
-        obj.select_set(True)
-
-        # Access the vertex groups
-        # vgroups = obj.vertex_groups
-
-        # Height Adjustment (Scaling Along Z-axis)
-        height_factor = body_data["height_m"] / 1.75  # Assuming default model height is ~1.7m
-        obj.scale.x *= height_factor   # Scale width-wise
-        obj.scale.y *= height_factor   # Scale depth-wise
-        obj.scale.z *= height_factor
-
-        # # Shoulder Width Adjustment (Scaling Along X-axis)
-        # shoulder_factor = body_data["shoulder_width_m"] / 0.35  # Assuming default shoulder width ~0.35m
-        # if "shoulder01.L" in vgroups and "shoulder01.R" in vgroups:
-        #     bpy.ops.transform.resize(value=(shoulder_factor, 1, 1))
-        #
-        # # Waist Width Adjustment (Scaling Along X-axis)
-        # waist_factor = body_data["waist_width_m"] / 0.2  # Assuming default waist width ~0.2m
-        # if "spine01" in vgroups:
-        #     bpy.ops.transform.resize(value=(waist_factor, 1, 1))
-        #
-        # # Stomach Depth Adjustment (Scaling Alosng Y-axis)
-        # depth_factor = body_data["stomach_to_back_m"] / 0.5  # Assuming default depth ~0.5m
-        # if "spine01" in vgroups:
-        #     bpy.ops.transform.resize(value=(1, depth_factor, 1))
-
-        # Export the adjusted model
-        export_path = r"exports\optimized_model.fbx"
-        bpy.ops.export_scene.fbx(filepath=export_path)
-        print(f"Model exported to {export_path}")
-
-        print("Model updated successfully based on JSON values.")
+        model_path = "DefaultModel/Male.obj"  # Use OBJ format
     else:
-        print("Error: Human model not found in Blender.")
+        model_path = "DefaultModel/Female.obj"
+
+    try:
+        mesh = trimesh.load_mesh(model_path)
+        print(f"✅ Successfully loaded model: {model_path}")
+    except Exception as e:
+        print(f"❌ Error loading model: {e}")
+        return
+
+    # Apply transformations based on measurements
+    default_height = 1.75
+    height_factor = body_data["height_m"]/default_height
+    mesh.apply_scale(height_factor)
+
+    # Export the adjusted model
+    export_path = "exports/optimized_model.obj"
+    mesh.export(export_path)
+    print(f"✅ Model exported to {export_path}")
+
+    print("🎉 Model updated successfully based on JSON values.")
 
