@@ -11,7 +11,7 @@
   width: 100%;
   height: 100vh;
   min-height: 600px;
-  background-image: url("/img/secback.png"); /* Fixed path */
+  background-image: url("/img/homeback.svg"); /* Fixed path */
   background-size: cover;
   background-position: center;
 
