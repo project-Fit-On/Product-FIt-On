@@ -90,7 +90,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\api\main.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -316,7 +316,23 @@
       <option name="project" value="LOCAL" />
       <updated>1741348054957</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Minor Changes">
+      <option name="closed" value="true" />
+      <created>1741348350862</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1741348350862</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Minor Changes">
+      <option name="closed" value="true" />
+      <created>1741348610161</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1741348610161</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
