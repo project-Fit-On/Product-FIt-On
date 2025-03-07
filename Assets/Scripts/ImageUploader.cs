@@ -26,6 +26,10 @@ public class ImageUploader : MonoBehaviour
             Debug.LogError("File not found: " + filePath);
             yield break; // Stop coroutine if file doesn't exist
         }
+        else
+        {
+            Debug.Log("File Found");
+        }
 
         // Read the file into a byte array
         byte[] fileData = File.ReadAllBytes(filePath);

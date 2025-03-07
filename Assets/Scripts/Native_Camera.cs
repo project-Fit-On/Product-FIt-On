@@ -67,7 +67,7 @@ public class Native_Camera : MonoBehaviour
 
             // Decide on a filename (image1.png for the first capture, image2.png for the second, etc.)
             // If you only ever take 2 photos total, you can just do:
-            string newFileName = "image" + photoCount + ".png";
+            string newFileName = "image" + photoCount + ".jpg";
 
             // Build the destination path inside the app's persistent folder
             string destinationPath = Path.Combine(Application.persistentDataPath, newFileName);
