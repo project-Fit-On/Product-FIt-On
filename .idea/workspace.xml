@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0154117e-56c6-4313-b666-ccf46ea062eb" name="Changes" comment="Minor Changes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,12 +62,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "ToolWindowRun.ShowToolbar": "false",
     "git-widget-placeholder": "imageProcessing",
-    "last_opened_file_path": "C:/Users/senir/Desktop/Product-FIt-On-imageProcessing/DefaultModel",
+    "last_opened_file_path": "C:/Users/senir/Desktop/Product-FIt-On-imageProcessing/api",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\api" />
       <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\DefaultModel" />
       <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing" />
       <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\src" />
@@ -382,7 +384,31 @@
       <option name="project" value="LOCAL" />
       <updated>1741357957230</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Minor Changes">
+      <option name="closed" value="true" />
+      <created>1741359221976</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1741359221976</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Minor Changes">
+      <option name="closed" value="true" />
+      <created>1741359227453</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1741359227453</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Minor Changes">
+      <option name="closed" value="true" />
+      <created>1741359328325</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1741359328325</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
