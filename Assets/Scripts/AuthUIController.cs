@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class AuthUIController : MonoBehaviour
 {
-    public InputField emailField;
-    public InputField passwordField;
+    public TMP_InputField emailField;
+    public TMP_InputField passwordField;
     public AuthManager authManager;
 
     public void OnRegisterButtonClicked()
