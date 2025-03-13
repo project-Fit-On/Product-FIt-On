@@ -1,16 +1,34 @@
 using UnityEngine;
+using Firebase;
+using System.Threading.Tasks;
 
 public class FirebaseInitializer : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        
+        InitializeFirebase();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void InitializeFirebase()
     {
-        
+        // Check that all of the necessary dependencies for Firebase are present on the system.
+        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+        {
+            var dependencyStatus = task.Result;
+            if (dependencyStatus == DependencyStatus.Available)
+            {
+                // Create and hold a reference to the FirebaseApp,
+                // i.e., the connection to Firebase.
+                FirebaseApp app = FirebaseApp.DefaultInstance;
+                Debug.Log("Firebase is ready to go!");
+
+                // Any additional Firebase setup can go here.
+            }
+            else
+            {
+                Debug.LogError(System.String.Format(
+                    "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+            }
+        });
     }
 }
