@@ -60,17 +60,26 @@
 
 .imageColumn {
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .imageWrapper {
   position: relative;
   height: 100%;
+  width: 100%;
   min-height: 600px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contactImage {
   transition: transform 1.5s ease;
+  max-width: 100%;
+  height: auto;
 }
 
 .imageWrapper:hover .contactImage {
@@ -79,7 +88,7 @@
 
 .imageBadge {
   position: absolute;
-  bottom: 30px;
+  bottom: 50px;
   left: 30px;
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
@@ -254,6 +263,7 @@
   }
 
   .imageWrapper {
+    height: 50%;
     min-height: 400px;
   }
 

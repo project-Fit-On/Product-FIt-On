@@ -64,6 +64,7 @@ export default function Contact() {
 
     // Simulate form submission
     try {
+      // In a real application, you would send the form data to your backend
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
       // Reset form on success
@@ -119,10 +120,11 @@ export default function Contact() {
           <div className={styles.imageColumn}>
             <div className={styles.imageWrapper}>
               <Image
-                src="/img/banner.gif"
+                src="/img/contact.svg"
                 alt="Fashion consultant"
-                fill
-                style={{ objectFit: "cover" }}
+                width={500}
+                height={500}
+                style={{ objectFit: "contain" }}
                 priority
                 className={styles.contactImage}
               />
