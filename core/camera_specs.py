@@ -34,8 +34,8 @@ def get_focal_length(image_path):
 
 def compute_focal_length():
     """Computes the final focal length based on available image data."""
-    focal_front = get_focal_length(r"uploads/front_view.jpg")
-    focal_side = get_focal_length(r"uploads/side_view.jpg")
+    focal_front = get_focal_length(r"../uploads/front_view.jpg")
+    focal_side = get_focal_length(r"../uploads/side_view.jpg")
 
     if focal_front is None and focal_side is None:
         return DEFAULT_FOCAL_LENGTH_MM
@@ -47,7 +47,7 @@ def compute_focal_length():
 
 
 # Get image dimensions from front view image
-IMAGE_WIDTH_PIXELS, IMAGE_HEIGHT_PIXELS = get_image_size(r"uploads/front_view.jpg")
+IMAGE_WIDTH_PIXELS, IMAGE_HEIGHT_PIXELS = get_image_size(r"../uploads/front_view.jpg")
 if IMAGE_WIDTH_PIXELS is None or IMAGE_HEIGHT_PIXELS is None:
     IMAGE_WIDTH_PIXELS, IMAGE_HEIGHT_PIXELS = 6048, 4524  # Default values
 

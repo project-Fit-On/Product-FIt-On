@@ -1,8 +1,8 @@
 import json
 import trimesh
 import cv2
-from face_analysis import estimate_distance_from_eyes
-from pose_analysis import measure_front_view, measure_side_view
+from core.face_analysis import estimate_distance_from_eyes
+from core.pose_analysis import measure_front_view, measure_side_view
 
 Gender = 'male'
 def setGender(gender):

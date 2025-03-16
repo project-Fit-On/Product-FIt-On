@@ -1,5 +1,0 @@
-http://127.0.0.1:8000/process - process 3d model
-http://127.0.0.1:8000/download - get processed 3d model
-http://127.0.0.1:8000/upload/frontView - post front view image
-http://127.0.0.1:8000/upload/sideView - post side view image
-http://127.0.0.1:8000/upload/gender - post gender
