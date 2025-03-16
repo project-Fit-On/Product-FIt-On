@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0154117e-56c6-4313-b666-ccf46ea062eb" name="Changes" comment="Minor Changes in the TestServer.py">
-      <change afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+    <list default="true" id="0154117e-56c6-4313-b666-ccf46ea062eb" name="Changes" comment="Major Changes in the working directory.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API calls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command line" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestServer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/camera_specs.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/camera_specs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/face_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/face_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DefaultModel/Female.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DefaultModel/Male.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/camera_specs.py" beforeDir="false" afterPath="$PROJECT_DIR$/camera_specs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/face_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/face_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/pose_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/pose_analysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pose_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/pose_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements.json" beforeDir="false" afterPath="$PROJECT_DIR$/measurements.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/front_view.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/side_view.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,26 +63,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.camera_specs.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;imageProcessing&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/senir/Desktop/Product-FIt-On-imageProcessing/api&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.camera_specs.executor": "Run",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ToolWindowRun.ShowToolbar": "false",
+    "git-widget-placeholder": "imageProcessing",
+    "last_opened_file_path": "C:/Users/senir/Desktop/Product-FIt-On-imageProcessing",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing" />
       <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\api" />
       <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\DefaultModel" />
-      <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing" />
       <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing" />
+      <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\core" />
       <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\api" />
       <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\src" />
       <recent name="C:\Users\senir\Desktop\Product-FIt-On-imageProcessing\Core" />
@@ -127,14 +128,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1740462598085</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Initial Commit">
-      <option name="closed" value="true" />
-      <created>1740749648592</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1740749648592</updated>
     </task>
     <task id="LOCAL-00004" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -520,7 +513,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741374721126</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Major Changes in the working directory.">
+      <option name="closed" value="true" />
+      <created>1742118846906</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1742118846906</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -531,6 +532,7 @@
     <MESSAGE value="Major changes in the local server" />
     <MESSAGE value="Minor Changes" />
     <MESSAGE value="Minor Changes in the TestServer.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Changes in the TestServer.py" />
+    <MESSAGE value="Major Changes in the working directory." />
+    <option name="LAST_COMMIT_MESSAGE" value="Major Changes in the working directory." />
   </component>
 </project>

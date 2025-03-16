@@ -1,8 +1,10 @@
 import json
 import trimesh
 import cv2
-from core.face_analysis import estimate_distance_from_eyes
-from core.pose_analysis import measure_front_view, measure_side_view
+from trimesh.smoothing import filter_laplacian, filter_taubin
+
+from face_analysis import estimate_distance_from_eyes
+from pose_analysis import measure_front_view, measure_side_view
 
 Gender = 'male'
 def setGender(gender):
@@ -50,28 +52,27 @@ def modelCreation():
     with open(json_path, 'r') as file:
         body_data = json.load(file)
 
-    # Load the human model using Trimesh
-    if body_data["gender"] == "male":
-        model_path = "DefaultModel/Male.obj"  # Use OBJ format
-    else:
-        model_path = "DefaultModel/Female.obj"
+        # Load the human model using Trimesh
+        if body_data["gender"] == "male":
+            model_path = "DefaultModel/Male.obj"  # Use OBJ format
+        else:
+            model_path = "DefaultModel/Female.obj"
 
-    try:
-        mesh = trimesh.load_mesh(model_path)
-        print(f" Successfully loaded model: {model_path}")
-    except Exception as e:
-        print(f" Error loading model: {e}")
-        return
+        try:
+            mesh = trimesh.load_mesh(model_path)
+            print(f" Successfully loaded model: {model_path}")
+        except Exception as e:
+            print(f" Error loading model: {e}")
+            return
 
-    # Apply transformations based on measurements
-    default_height = 1.75
-    height_factor = body_data["height_m"]/default_height
-    mesh.apply_scale(height_factor)
+        # Apply transformations based on measurements
+        default_height = 1.75
+        height_factor = body_data["height_m"] / default_height
+        mesh.apply_scale(height_factor)
 
-    # Export the adjusted model
-    export_path = "exports/optimized_model.obj"
-    mesh.export(export_path)
-    print(f" Model exported to {export_path}")
+        # Export the adjusted model
+        export_path = "exports/optimized_model.obj"
+        mesh.export(export_path)
+        print(f" Model exported to {export_path}")
 
     print(" Model updated successfully based on JSON values.")
-
