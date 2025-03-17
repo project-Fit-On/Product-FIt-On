@@ -5,6 +5,7 @@ import Header from "./Pages/Header";
 import HowItWorks from "./Pages/HowItWorks";
 import WhyChooseFitOn from "./Pages/Feature";
 import Contact from "./Pages/Contact";
+import Footer from "./Pages/Footer";
 
 export default function Home() {
   return (
@@ -34,6 +35,7 @@ export default function Home() {
       <WhyChooseFitOn />
       <HowItWorks />
       <Contact />
+      <Footer />
     </main>
   );
 }
