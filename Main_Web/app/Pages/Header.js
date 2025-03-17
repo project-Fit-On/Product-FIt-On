@@ -1,50 +1,74 @@
 "use client";
-import { useState } from "react";
-import "../app/styles/Model.css";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import styles from "./Header.module.css";
 
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  if (!mounted) {
+    return null;
+  }
+
   return (
-    <>
-      <nav className="navbar">
-        <div className="nav-container">
-          {/* Desktop Menu */}
-          <div className="nav-left">
-            <a href="#home" className="nav-link">
-              Home
-            </a>
-            <a href="#features" className="nav-link">
-              Features
-            </a>
+    <header className={styles.header}>
+      <nav className={styles.navbar}>
+        <div className={styles["nav-container"]}>
+          <div className={styles["nav-left"]}>
+            <Link href="/about" className={styles["nav-link"]}>
+              About
+            </Link>
+            <Link href="/services" className={styles["nav-link"]}>
+              Services
+            </Link>
           </div>
 
-          {/* Centered Logo */}
-          <div className="logo-container">
-            <div className="logo-circle">
-              <img src="/models/logo.png" alt="Logo" className="nav-logo" />
+          <div className={styles["logo-container"]}>
+            <div className={styles["logo-circle"]}>
+              <Link href="/">
+                <Image
+                  src="/img/logo.png"
+                  alt="FitOn Logo"
+                  width={60}
+                  height={60}
+                  className={styles["nav-logo"]}
+                />
+              </Link>
             </div>
           </div>
 
-          <div className="nav-right">
-            <a href="#comingsoon" className="nav-link">
-              Coming Soon
-            </a>
-            <a href="#team" className="nav-link">
-              Team
-            </a>
-            <a href="#contact" className="nav-link">
+          <div className={styles["nav-right"]}>
+            <Link href="/catalog" className={styles["nav-link"]}>
+              Catalog
+            </Link>
+            <Link href="/contact" className={styles["nav-link"]}>
               Contact
-            </a>
+            </Link>
+            <Link href="/login" className={styles["login-button"]}>
+              Login
+            </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button className="menu-toggle" onClick={toggleMenu}>
-            <div className={`hamburger ${isOpen ? "active" : ""}`}>
+          <button
+            className={styles["menu-toggle"]}
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            <div
+              className={`${styles.hamburger} ${
+                mobileMenuOpen ? styles.active : ""
+              }`}
+            >
               <span></span>
               <span></span>
               <span></span>
@@ -54,34 +78,69 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Menu */}
-      <div className={`mobile-menu ${isOpen ? "active" : ""}`}>
-        <div className="mobile-logo-container">
-          <div className="logo-circle">
-            <img src="/models/logo.png" alt="Logo" className="nav-logo" />
-          </div>
+      <div
+        className={`${styles["mobile-menu"]} ${
+          mobileMenuOpen ? styles.active : ""
+        }`}
+      >
+        <div className={styles["mobile-logo-container"]}>
+          <Link href="/">
+            <Image
+              src="/logo-white.png"
+              alt="FitOn Logo"
+              width={60}
+              height={60}
+            />
+          </Link>
         </div>
-        <button className="close-menu" onClick={toggleMenu}>
+
+        <button
+          className={styles["close-menu"]}
+          onClick={toggleMobileMenu}
+          aria-label="Close menu"
+        >
           <span></span>
           <span></span>
         </button>
-        <div className="mobile-links">
-          <a href="#home" className="mobile-link" onClick={toggleMenu}>
-            Home
-          </a>
-          <a href="#features" className="mobile-link" onClick={toggleMenu}>
-            Features
-          </a>
-          <a href="#comingsoon" className="mobile-link" onClick={toggleMenu}>
-            Coming Soon
-          </a>
-          <a href="#team" className="mobile-link" onClick={toggleMenu}>
-            Team
-          </a>
-          <a href="#contact" className="mobile-link" onClick={toggleMenu}>
+
+        <div className={styles["mobile-links"]}>
+          <Link
+            href="/about"
+            className={styles["mobile-link"]}
+            onClick={toggleMobileMenu}
+          >
+            About
+          </Link>
+          <Link
+            href="/services"
+            className={styles["mobile-link"]}
+            onClick={toggleMobileMenu}
+          >
+            Services
+          </Link>
+          <Link
+            href="/catalog"
+            className={styles["mobile-link"]}
+            onClick={toggleMobileMenu}
+          >
+            Catalog
+          </Link>
+          <Link
+            href="/contact"
+            className={styles["mobile-link"]}
+            onClick={toggleMobileMenu}
+          >
             Contact
-          </a>
+          </Link>
+          <Link
+            href="/login"
+            className={styles["mobile-link"]}
+            onClick={toggleMobileMenu}
+          >
+            Login
+          </Link>
         </div>
       </div>
-    </>
+    </header>
   );
 }

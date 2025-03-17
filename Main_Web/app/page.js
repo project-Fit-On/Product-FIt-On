@@ -4,6 +4,7 @@ import Image from "next/image";
 import HowItWorks from "./Pages/HowItWorks";
 import WhyChooseFitOn from "./Pages/Feature";
 import Contact from "./Pages/Contact";
+import Header from "./Pages/Header";
 
 export default function Home() {
   return (
