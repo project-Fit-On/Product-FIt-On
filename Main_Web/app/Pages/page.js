@@ -1,11 +1,11 @@
 import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import Header from "./Components/Header";
-import HowItWorks from "./Components/HowItWorks";
-import WhyChooseFitOn from "./Components/Feature";
-import Contact from "./Components/Contact";
-import Footer from "./Components/Footer";
+import Header from "../Components/Header";
+import HowItWorks from "../Components/HowItWorks";
+import WhyChooseFitOn from "../Components/Feature";
+import Contact from "../Components/Contact";
+import Footer from "../Components/Footer";
 
 export default function Home() {
   return (

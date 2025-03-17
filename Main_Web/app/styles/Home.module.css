@@ -1,171 +1,174 @@
-.container {
-  width: 100%;
-  min-height: 100vh;
-  padding: 0;
-  margin: 0;
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1400px;
+  background: white;
+  border-radius: 50px;
+  padding: 1.25rem 2.5rem;
+  z-index: 1000;
 }
 
-.bannerSection {
+.nav-container {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
-  width: 100%;
-  height: 100vh;
-  min-height: 600px;
-  background-image: url("/background-image.jpg"); /* Replace with your actual image path */
-  background-size: cover;
-  background-position: center;
-  background-color: #00205b; /* Dark blue fallback */
-  color: white;
-  overflow: hidden;
 }
 
-.bannerSection::before {
-  content: "";
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav-link {
+  color: #4b0082;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #8a2be2;
+}
+
+/* Logo Styles */
+.logo-container {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 32, 91, 0.9) 50%,
-    rgba(0, 32, 91, 0.7) 75%,
-    rgba(0, 32, 91, 0.5) 100%
-  );
-  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -35px;
+  z-index: 1001;
 }
 
-.bannerContent {
-  position: relative;
+.logo-circle {
+  width: 80px;
+  height: 80px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+/* Mobile Menu Button */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.hamburger {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 0 5%;
-  width: 50%;
-  z-index: 2;
+  gap: 6px;
 }
 
-.title {
-  font-size: 4rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.subtitle {
-  font-size: 2.5rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-}
-
-.description {
-  font-size: 1.5rem;
-  margin-bottom: 2.5rem;
-}
-
-.buttonContainer {
-  display: flex;
-  gap: 1rem;
-}
-
-.primaryButton,
-.secondaryButton {
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #4b0082;
   transition: all 0.3s ease;
 }
 
-.primaryButton {
-  background-color: white;
-  color: #00205b;
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
 }
 
-.primaryButton:hover {
-  background-color: #f0f0f0;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
 }
 
-.secondaryButton {
-  background-color: transparent;
-  color: white;
-  border: 2px solid white;
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
-.secondaryButton:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #4b0082;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
 }
 
-.bannerImage {
+.mobile-menu.active {
+  transform: translateX(0);
+}
+
+.mobile-logo-container {
   position: absolute;
-  right: 0;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mobile-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mobile-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-link:hover {
+  opacity: 0.8;
+}
+
+.close-menu {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.close-menu span {
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background: white;
   top: 50%;
-  transform: translateY(-50%);
-  width: 50%;
-  height: 80%;
-  background-image: url("/fashion-illustration.png"); /* Replace with your actual image path */
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 2;
+  left: 50%;
 }
 
-/* Media Queries for Responsiveness */
-@media (max-width: 1024px) {
-  .bannerContent {
-    width: 60%;
-  }
-
-  .bannerImage {
-    width: 40%;
-  }
-
-  .title {
-    font-size: 3.5rem;
-  }
-
-  .subtitle {
-    font-size: 2rem;
-  }
+.close-menu span:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
-@media (max-width: 768px) {
-  .bannerSection {
-    flex-direction: column;
-  }
-
-  .bannerContent {
-    width: 100%;
-    padding: 2rem;
-    align-items: center;
-    text-align: center;
-  }
-
-  .bannerImage {
-    position: relative;
-    width: 100%;
-    height: 50%;
-    transform: none;
-    top: 0;
-  }
-
-  .title {
-    font-size: 3rem;
-  }
-
-  .description {
-    font-size: 1.25rem;
-  }
-
-  .buttonContainer {
-    flex-direction: column;
-    width: 100%;
-    max-width: 300px;
-  }
+.close-menu span:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }

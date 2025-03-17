@@ -1,0 +1,363 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.authContainer {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  position: relative;
+  height: 700px;
+  transition: all 0.6s ease-in-out;
+}
+
+.authContainer.signUp {
+  flex-direction: row-reverse;
+}
+
+.imageSection {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  transition: transform 0.6s ease-in-out;
+  overflow: hidden;
+}
+
+.logoImage {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+}
+
+.backgroundImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.backgroundImage {
+  object-fit: cover;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 32px;
+  display: flex;
+  align-items: flex-end;
+  z-index: 1;
+}
+
+.overlayContent {
+  color: white;
+  max-width: 80%;
+}
+
+.overlayContent h2 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.overlayContent p {
+  font-size: 16px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.formSection {
+  width: 50%;
+  padding: 32px 48px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+
+.logo {
+  margin-bottom: 24px;
+  height: 40px;
+  width: 200px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form h1 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 16px;
+}
+
+.socialButtons {
+  display: flex;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.socialButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 15px;
+  color: #333;
+}
+
+.socialButton:hover {
+  background-color: #f5f5f5;
+  transform: translateY(-2px);
+}
+
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 16px 0;
+}
+
+.divider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background: #ddd;
+}
+
+.divider span {
+  position: relative;
+  background: white;
+  padding: 0 16px;
+  color: #666;
+  font-size: 14px;
+}
+
+.formFields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"] {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s;
+  background: white;
+}
+
+.form input:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+.formOptions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.formOptions label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.formOptions input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.recoverButton {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+}
+
+.recoverButton:hover {
+  text-decoration: underline;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 14px;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 8px;
+}
+
+.submitButton:hover {
+  background: #ff5252;
+  transform: translateY(-2px);
+}
+
+.switchForm {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+.switchForm button {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0;
+  margin-left: 4px;
+}
+
+.switchForm button:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+    background: white;
+  }
+
+  .authContainer {
+    flex-direction: column !important;
+    height: auto;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: none;
+  }
+
+  .imageSection {
+    width: 100%;
+    height: 200px;
+    transform: none !important;
+    margin-bottom: 24px;
+    border-radius: 12px;
+  }
+
+  .signUp .imageSection {
+    transform: none !important;
+    order: -1;
+  }
+
+  .formSection {
+    width: 100%;
+    padding: 0;
+    overflow-y: visible;
+  }
+
+  .imageOverlay {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 12px;
+  }
+
+  .overlayContent {
+    max-width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .overlayContent h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .overlayContent p {
+    font-size: 15px;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .form {
+    gap: 16px;
+  }
+
+  .form h1 {
+    font-size: 24px;
+  }
+
+  .socialButtons {
+    margin: 16px 0;
+  }
+
+  .form input[type="text"],
+  .form input[type="email"],
+  .form input[type="password"] {
+    padding: 12px;
+    background: #f8f8f8;
+  }
+
+  .form input:focus {
+    background: white;
+  }
+
+  .submitButton {
+    padding: 12px;
+  }
+
+  .switchForm {
+    margin-top: 20px;
+  }
+}
