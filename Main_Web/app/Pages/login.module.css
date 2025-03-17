@@ -6,13 +6,15 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
+  /* Remove margin-top when using header */
+  margin-top: 0;
 }
 
 .authContainer {
   display: flex;
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 80px auto; /* Add margin to account for header */
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -272,6 +274,12 @@
   text-decoration: underline;
 }
 
+/* Content wrapper to push content below header */
+.contentWrapper {
+  width: 100%;
+  min-height: calc(100vh - 80px); /* Adjust for header height */
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
   .container {
@@ -285,6 +293,7 @@
     width: 100%;
     max-width: 400px;
     box-shadow: none;
+    margin-top: 60px; /* Reduced margin for mobile */
   }
 
   .imageSection {
