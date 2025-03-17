@@ -1,0 +1,171 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.bannerSection {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  background-image: url("/background-image.jpg"); /* Replace with your actual image path */
+  background-size: cover;
+  background-position: center;
+  background-color: #00205b; /* Dark blue fallback */
+  color: white;
+  overflow: hidden;
+}
+
+.bannerSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 32, 91, 0.9) 50%,
+    rgba(0, 32, 91, 0.7) 75%,
+    rgba(0, 32, 91, 0.5) 100%
+  );
+  z-index: 1;
+}
+
+.bannerContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 5%;
+  width: 50%;
+  z-index: 2;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-size: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.primaryButton,
+.secondaryButton {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primaryButton {
+  background-color: white;
+  color: #00205b;
+}
+
+.primaryButton:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.secondaryButton {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.secondaryButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.bannerImage {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50%;
+  height: 80%;
+  background-image: url("/fashion-illustration.png"); /* Replace with your actual image path */
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .bannerContent {
+    width: 60%;
+  }
+
+  .bannerImage {
+    width: 40%;
+  }
+
+  .title {
+    font-size: 3.5rem;
+  }
+
+  .subtitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .bannerSection {
+    flex-direction: column;
+  }
+
+  .bannerContent {
+    width: 100%;
+    padding: 2rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .bannerImage {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    transform: none;
+    top: 0;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .description {
+    font-size: 1.25rem;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+}
