@@ -1,78 +1,92 @@
-import json
-import trimesh
-import cv2
-from trimesh.smoothing import filter_laplacian, filter_taubin
+import os
+import shutil
+import uvicorn
+from fastapi import FastAPI, File, UploadFile, HTTPException, Form
+import secrets
+from pathlib import Path
+from starlette.responses import FileResponse
+from ModelCreation import modelCreation
+from ModelCreation import setGender
+from mangum import Mangum
 
-from face_analysis import estimate_distance_from_eyes
-from pose_analysis import measure_front_view, measure_side_view
+# Create FastAPI instance
+app = FastAPI()
+handler = Mangum(app)
 
-Gender = 'male'
-def setGender(gender):
-    global Gender
-    Gender = gender
+# Store API keys (In production, store securely in a database or environment variable)
+API_KEYS = {"user1": secrets.token_hex(16)}
 
-def modelCreation():
-    # Load images
+# Directory paths
+BASE_DIR = Path(__file__).resolve().parent  # Get the current script directory
+UPLOAD_FOLDER = BASE_DIR / "uploads"
+EXPORT_FOLDER = BASE_DIR / "exports"
 
-    front_image = cv2.imread(r"uploads/front_view.jpg")
-    side_image = cv2.imread(r"uploads/side_view.jpg")
 
-    # Estimate depth from eyes
-    depth_est = estimate_distance_from_eyes(front_image) or 2.0
-    print(f"Estimated depth: {depth_est:.2f} m")
+# Ensure directories exist
+UPLOAD_FOLDER.mkdir(parents=True, exist_ok=True)
+EXPORT_FOLDER.mkdir(parents=True, exist_ok=True)
 
-    # Perform measurements
-    shoulder_m, waist_m = measure_front_view(front_image, depth_est)
-    height_m, stomach_back_m = measure_side_view(side_image, depth_est)
 
-    # Print measurement results
-    print(f" Shoulder Width: {shoulder_m:.2f} m" if shoulder_m else " Shoulder width not detected.")
-    print(f" Waist Width: {waist_m:.2f} m" if waist_m else " Waist width not detected.")
-    print(f" Height: {height_m:.2f} m" if height_m else "️ Height not detected.")
-    print(f" Stomach-to-Back: {stomach_back_m:.2f} m" if stomach_back_m else " Stomach-to-back not detected.")
+# API Key Dependency
+def verify_api_key(api_key: str):
+    if api_key not in API_KEYS.values():
+        raise HTTPException(status_code=403, detail="Invalid API Key")
+    return api_key
 
-    # Save measurements to JSON
-    measurement_data = {
-        "gender": Gender,
-        "depth_estimated": depth_est,
-        "shoulder_width_m": shoulder_m if shoulder_m else None,
-        "waist_width_m": waist_m if waist_m else None,
-        "height_m": height_m if height_m else None,
-        "stomach_to_back_m": stomach_back_m if stomach_back_m else None
-    }
 
-    json_filename = "measurements.json"
-    with open(json_filename, "w") as json_file:
-        json.dump(measurement_data, json_file, indent=4)
+# Upload images endpoint
+@app.post("/upload/frontView")
+async def upload_front_images(
+        front_view: UploadFile = File(...),
+):
+    print("POST request received on /upload")
+    allowed_extensions = {".jpg", ".jpeg", ".png"}
+    if not (front_view.filename.endswith(tuple(allowed_extensions))):
+        return {"error": "Only JPG and PNG files are allowed"}
+    front_path = UPLOAD_FOLDER / "front_view.jpg"
 
-    print(f" Measurements saved to {json_filename}")
+    with open(front_path, "wb") as buffer:
+        shutil.copyfileobj(front_view.file, buffer)
 
-    # Load JSON data
-    json_path = "measurements.json"
-    with open(json_path, 'r') as file:
-        body_data = json.load(file)
+    return {"message": "Images uploaded successfully", "front_image": str(front_path)}
+@app.post("/upload/sideView")
+async def upload_side_images(
+        side_view: UploadFile = File(...)):
+    print("POST request received on /upload")
+    allowed_extensions = {".jpg", ".jpeg", ".png"}
+    if not ( side_view.filename.endswith(tuple(allowed_extensions))):
+        return {"error": "Only JPG and PNG files are allowed"}
+    side_path = UPLOAD_FOLDER / "side_view.jpg"
+    with open(side_path, "wb") as buffer:
+        shutil.copyfileobj(side_view.file, buffer)
 
-        # Load the human model using Trimesh
-        if body_data["gender"] == "male":
-            model_path = "DefaultModel/Male.obj"  # Use OBJ format
-        else:
-            model_path = "DefaultModel/Female.obj"
+    return {"message": "Images uploaded successfully","side_image": str(side_path)}
 
-        try:
-            mesh = trimesh.load_mesh(model_path)
-            print(f" Successfully loaded model: {model_path}")
-        except Exception as e:
-            print(f" Error loading model: {e}")
-            return
+@app.post("/upload/gender")
+async def upload_side_images(
+        Gender: str = Form(...)):
+    print("POST request received on /upload")
+    setGender(Gender)
+    return {"message": "Gender uploaded successfully","Gender": str(Gender)}
 
-        # Apply transformations based on measurements
-        default_height = 1.75
-        height_factor = body_data["height_m"] / default_height
-        mesh.apply_scale(height_factor)
 
-        # Export the adjusted model
-        export_path = "exports/optimized_model.obj"
-        mesh.export(export_path)
-        print(f" Model exported to {export_path}")
 
-    print(" Model updated successfully based on JSON values.")
+@app.get("/process")
+def process_images():
+     modelCreation()
+     return {"message": "Model Created Succesfully"}
+
+# Get exported 3D model
+@app.get("/download")
+def download_model():
+    export_path = EXPORT_FOLDER / "optimized_model.obj"
+    if not export_path.exists():
+        raise HTTPException(status_code=404, detail="3D model not found")
+
+    return FileResponse(path=export_path, filename="optimized_model.obj", media_type="application/octet-stream")
+
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8080))  # Cloud Run provides PORT automatically
+    uvicorn.run(app, host="0.0.0.0", port=port)
+
+

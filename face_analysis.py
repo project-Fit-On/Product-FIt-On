@@ -1,7 +1,7 @@
 import cv2
 import mediapipe as mp
 import numpy as np
-from camera_specs import FOCAL_LENGTH_X_PIXELS
+from camera_specs import FOCAL_LENGTH_X_PIXELS, get_cam_specs
 
 mp_face_mesh = mp.solutions.face_mesh
 face_mesh = mp_face_mesh.FaceMesh(
@@ -27,6 +27,7 @@ def detect_face_landmarks(image):
 
 def estimate_distance_from_eyes(image):
     """Estimates face-to-camera distance."""
+    get_cam_specs()
     landmarks = detect_face_landmarks(image)
     if landmarks is None:
         return None

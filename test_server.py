@@ -5,8 +5,8 @@ from fastapi import FastAPI, File, UploadFile, HTTPException, Form
 import secrets
 from pathlib import Path
 from starlette.responses import FileResponse
-from main import modelCreation
-from main import setGender
+from ModelCreation import modelCreation
+from ModelCreation import setGender
 from mangum import Mangum
 
 # Create FastAPI instance
