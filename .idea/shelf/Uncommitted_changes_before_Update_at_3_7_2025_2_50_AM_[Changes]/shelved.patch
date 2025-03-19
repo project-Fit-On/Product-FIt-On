@@ -1,0 +1,101 @@
+Index: test.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import cv2\r\nimport mediapipe as mp\r\nimport numpy as np\r\nimport piexif\r\nfrom mediapipe.python.solutions import face_mesh\r\n\r\n# -----------------------------------------------------------------------------\r\n# 1) MediaPipe Pose + FaceMesh Setup\r\n# -----------------------------------------------------------------------------\r\nmp_pose = mp.solutions.pose\r\npose = mp_pose.Pose()\r\n\r\nface_mesh_detector = face_mesh.FaceMesh(\r\n    static_image_mode=True,\r\n    max_num_faces=1,\r\n    refine_landmarks=True,\r\n    min_detection_confidence=0.5\r\n)\r\n\r\n# -----------------------------------------------------------------------------\r\n# 2) Read Focal Length from EXIF\r\n# -----------------------------------------------------------------------------\r\ndef get_focal_length(image_path):\r\n    \"\"\"\r\n    Reads EXIF FocalLength (tag 0x920A) from a JPEG using piexif.\r\n    Returns the focal length in mm (float), or None if missing.\r\n    \"\"\"\r\n    exif_data = piexif.load(image_path)\r\n    exif_ifd = exif_data.get(\"Exif\", {})\r\n    focal_length_tag = 0x920A\r\n\r\n    if focal_length_tag in exif_ifd:\r\n        # Typically stored as a Rational, e.g. (57, 10) => 5.7 mm\r\n        focal_rational = exif_ifd[focal_length_tag]\r\n        numerator, denominator = focal_rational\r\n        return numerator / denominator\r\n    else:\r\n        return None\r\n\r\n# Attempt to read focal lengths from both images\r\nfocal_front_mm = get_focal_length(\"front_view.jpg\")\r\nfocal_side_mm  = get_focal_length(\"side_view.jpg\")\r\n\r\n# Decide on final focal length\r\nif focal_front_mm is None and focal_side_mm is None:\r\n    print(\"⚠\uFE0F No EXIF focal length found in either image. Falling back to 5.7 mm.\")\r\n    FOCAL_LENGTH_MM = 5.7\r\nelif focal_front_mm is None:\r\n    print(f\"⚠\uFE0F No EXIF focal length in front_view, using side_view only ({focal_side_mm:.2f} mm)\")\r\n    FOCAL_LENGTH_MM = focal_side_mm\r\nelif focal_side_mm is None:\r\n    print(f\"⚠\uFE0F No EXIF focal length in side_view, using front_view only ({focal_front_mm:.2f} mm)\")\r\n    FOCAL_LENGTH_MM = focal_front_mm\r\nelse:\r\n    # Both found\r\n    FOCAL_LENGTH_MM = (focal_front_mm + focal_side_mm) / 2\r\n    print(f\"Focal lengths found: front={focal_front_mm:.2f} mm, side={focal_side_mm:.2f} mm.\")\r\n    print(f\"Using average FOCAL_LENGTH_MM = {FOCAL_LENGTH_MM:.2f} mm\")\r\n\r\n# -----------------------------------------------------------------------------\r\n# 3) Camera/Sensor Specs\r\n# -----------------------------------------------------------------------------\r\nSENSOR_WIDTH_MM  = 9.0\r\nSENSOR_HEIGHT_MM = 7.0\r\nIMAGE_WIDTH_PIXELS  = 6048\r\nIMAGE_HEIGHT_PIXELS = 4524\r\n\r\n# Convert mm -> px\r\nFOCAL_LENGTH_X_PIXELS = (FOCAL_LENGTH_MM / SENSOR_WIDTH_MM) * IMAGE_WIDTH_PIXELS\r\nFOCAL_LENGTH_Y_PIXELS = (FOCAL_LENGTH_MM / SENSOR_HEIGHT_MM) * IMAGE_HEIGHT_PIXELS\r\n\r\n# -----------------------------------------------------------------------------\r\n# 4) Face Landmark Functions\r\n# -----------------------------------------------------------------------------\r\ndef detect_face_landmarks(image):\r\n    \"\"\"\r\n    Uses MediaPipe FaceMesh to find left_eye (33) and right_eye (263).\r\n    Returns {'left_eye': (x,y), 'right_eye': (x,y)} or None if no face found.\r\n    \"\"\"\r\n    image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)\r\n    results = face_mesh_detector.process(image_rgb)\r\n\r\n    if results.multi_face_landmarks:\r\n        face_landmarks = results.multi_face_landmarks[0]\r\n        left_eye  = face_landmarks.landmark[33]\r\n        right_eye = face_landmarks.landmark[263]\r\n\r\n        h, w, _ = image.shape\r\n        left_eye_coords  = (int(left_eye.x * w), int(left_eye.y * h))\r\n        right_eye_coords = (int(right_eye.x * w), int(right_eye.y * h))\r\n\r\n        return {'left_eye': left_eye_coords, 'right_eye': right_eye_coords}\r\n    return None\r\n\r\ndef estimate_distance_from_eyes(image):\r\n    \"\"\"\r\n    Estimate camera-to-face distance based on average IPD (63 mm).\r\n    distance_m ~ (IPD_m * focal_length_in_px) / (eye_distance_pixels)\r\n    \"\"\"\r\n    landmarks = detect_face_landmarks(image)\r\n    if landmarks is None:\r\n        return None\r\n\r\n    left_eye_px  = landmarks['left_eye']\r\n    right_eye_px = landmarks['right_eye']\r\n    eye_distance_pixels = np.linalg.norm(np.array(left_eye_px) - np.array(right_eye_px))\r\n\r\n    IPD_METERS = 0.063\r\n    distance_m = (IPD_METERS * FOCAL_LENGTH_X_PIXELS) / eye_distance_pixels\r\n    return distance_m\r\n\r\n# -----------------------------------------------------------------------------\r\n# 5) Pose Functions\r\n# -----------------------------------------------------------------------------\r\ndef detect_keypoints(image):\r\n    img_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)\r\n    results = pose.process(img_rgb)\r\n    return results\r\n\r\ndef get_landmark_coords(image, landmarks, idx):\r\n    h, w, _ = image.shape\r\n    landmark = landmarks.landmark[idx]\r\n    if landmark.visibility > 0.3:\r\n        x = int(landmark.x * w)\r\n        y = int(landmark.y * h)\r\n        return (x, y)\r\n    return None\r\n\r\ndef pixel_to_meters(pixel_distance, focal_length_pixels, depth_meters):\r\n    if pixel_distance is None:\r\n        return None\r\n    return (pixel_distance * depth_meters) / focal_length_pixels\r\n\r\ndef measure_front_view(image, depth):\r\n    \"\"\"\r\n    Returns (shoulder_width_m, waist_width_m).\r\n    \"\"\"\r\n    results = detect_keypoints(image)\r\n    if not results.pose_landmarks:\r\n        return None, None\r\n\r\n    landmarks = results.pose_landmarks\r\n\r\n    # Shoulder\r\n    left_shoulder = get_landmark_coords(image, landmarks, mp_pose.PoseLandmark.LEFT_SHOULDER)\r\n    right_shoulder = get_landmark_coords(image, landmarks, mp_pose.PoseLandmark.RIGHT_SHOULDER)\r\n    if left_shoulder and right_shoulder:\r\n        shoulder_px = np.linalg.norm(np.array(left_shoulder) - np.array(right_shoulder))\r\n        shoulder_m = pixel_to_meters(shoulder_px, FOCAL_LENGTH_X_PIXELS, depth)\r\n    else:\r\n        shoulder_m = None\r\n\r\n    # Waist\r\n    left_hip = get_landmark_coords(image, landmarks, mp_pose.PoseLandmark.LEFT_HIP)\r\n    right_hip = get_landmark_coords(image, landmarks, mp_pose.PoseLandmark.RIGHT_HIP)\r\n    if left_hip and right_hip:\r\n        waist_px = np.linalg.norm(np.array(left_hip) - np.array(right_hip))\r\n        waist_m = pixel_to_meters(waist_px, FOCAL_LENGTH_X_PIXELS, depth)\r\n    else:\r\n        waist_m = None\r\n\r\n    return shoulder_m, waist_m\r\n\r\ndef measure_side_view(image, depth):\r\n    \"\"\"\r\n    Returns (height_m, stomach_back_m).\r\n    \"\"\"\r\n    results = detect_keypoints(image)\r\n    if not results.pose_landmarks:\r\n        return None, None\r\n\r\n    landmarks = results.pose_landmarks\r\n\r\n    # Top of head: midpoint of ears or fallback to nose\r\n    left_ear  = get_landmark_coords(image, landmarks, mp_pose.PoseLandmark.LEFT_EAR)\r\n    right_ear = get_landmark_coords(image, landmarks, mp_pose.PoseLandmark.RIGHT_EAR)\r\n    if left_ear and right_ear:\r\n        head_top = ((left_ear[0] + right_ear[0]) // 2,\r\n                    (left_ear[1] + right_ear[1]) // 2)\r\n    else:\r\n        head_top = get_landmark_coords(image, landmarks, mp_pose.PoseLandmark.NOSE)\r\n\r\n    # Foot or ankle\r\n    foot_idx = get_landmark_coords(image, landmarks, mp_pose.PoseLandmark.RIGHT_FOOT_INDEX)\r\n    if not foot_idx:\r\n        foot_idx = get_landmark_coords(image, landmarks, mp_pose.PoseLandmark.RIGHT_ANKLE)\r\n\r\n    if head_top and foot_idx:\r\n        height_px = np.linalg.norm(np.array(head_top) - np.array(foot_idx))\r\n        height_m = pixel_to_meters(height_px, FOCAL_LENGTH_Y_PIXELS, depth)\r\n    else:\r\n        height_m = None\r\n\r\n    # Shoulders -> hips\r\n    left_shoulder = get_landmark_coords(image, landmarks, mp_pose.PoseLandmark.LEFT_SHOULDER)\r\n    right_shoulder = get_landmark_coords(image, landmarks, mp_pose.PoseLandmark.RIGHT_SHOULDER)\r\n    left_hip = get_landmark_coords(image, landmarks, mp_pose.PoseLandmark.LEFT_HIP)\r\n    right_hip = get_landmark_coords(image, landmarks, mp_pose.PoseLandmark.RIGHT_HIP)\r\n\r\n    if left_shoulder and right_shoulder and left_hip and right_hip:\r\n        shoulder_mid = (\r\n            (left_shoulder[0] + right_shoulder[0]) // 2,\r\n            (left_shoulder[1] + right_shoulder[1]) // 2\r\n        )\r\n        hip_mid = (\r\n            (left_hip[0] + right_hip[0]) // 2,\r\n            (left_hip[1] + right_hip[1]) // 2\r\n        )\r\n        thickness_px = np.linalg.norm(np.array(hip_mid) - np.array(shoulder_mid))\r\n        stomach_back_m = pixel_to_meters(thickness_px, FOCAL_LENGTH_X_PIXELS, depth)\r\n    else:\r\n        stomach_back_m = None\r\n\r\n    return height_m, stomach_back_m\r\n\r\n# -----------------------------------------------------------------------------\r\n# 6) Main\r\n# -----------------------------------------------------------------------------\r\nif __name__ == \"__main__\":\r\n    front_image = cv2.imread(\"front_view.jpg\")\r\n    side_image  = cv2.imread(\"side_view.jpg\")\r\n\r\n    if front_image is None or side_image is None:\r\n        print(\"⚠\uFE0F Error: Could not load front_view.jpg or side_view.jpg\")\r\n        exit()\r\n\r\n    # Estimate distance from eyes in front image\r\n    depth_est = estimate_distance_from_eyes(front_image)\r\n    if depth_est is None:\r\n        depth_est = 2.0  # fallback if face detection fails\r\n        print(\"⚠\uFE0F Could not detect face in front image. Falling back to depth=2.0 m\")\r\n    else:\r\n        print(f\"Estimated depth from eyes: {depth_est:.2f} m\")\r\n\r\n    # Measure from front + side\r\n    shoulder_width_m, waist_width_m = measure_front_view(front_image, depth_est)\r\n    height_m, stomach_back_m        = measure_side_view(side_image, depth_est)\r\n\r\n    if shoulder_width_m:\r\n        print(f\"\uD83D\uDCCF Shoulder Width: {shoulder_width_m:.2f} m\")\r\n    else:\r\n        print(\"⚠\uFE0F Shoulder width not detected.\")\r\n\r\n    if waist_width_m:\r\n        print(f\"\uD83D\uDCCF Waist Width: {waist_width_m:.2f} m\")\r\n    else:\r\n        print(\"⚠\uFE0F Waist width not detected.\")\r\n\r\n    if height_m:\r\n        print(f\"\uD83D\uDCCF Height: {height_m:.2f} m\")\r\n    else:\r\n        print(\"⚠\uFE0F Height not detected.\")\r\n\r\n    if stomach_back_m:\r\n        print(f\"\uD83D\uDCCF Stomach-to-Back: {stomach_back_m:.2f} m\")\r\n    else:\r\n        print(\"⚠\uFE0F Stomach-to-back distance not detected.\")\r\n\r\n        # Get original dimensions\r\n        height, width = front_image.shape[:2]\r\n\r\n        # Resize to a quarter of original dimensions\r\n        new_size = (width // 2, height // 2)\r\n\r\n        # Resize images\r\n        front_image_resized = cv2.resize(front_image, new_size)\r\n        side_image_resized = cv2.resize(side_image, new_size)\r\n\r\n        # Display resized images\r\n        cv2.imshow(\"Resized Front View\", front_image_resized)\r\n        cv2.imshow(\"Resized Side View\", side_image_resized)\r\n        cv2.waitKey(0)\r\n        cv2.destroyAllWindows()
+===================================================================
+diff --git a/test.py b/test.py
+--- a/test.py	(revision d4cd86bd8b90ac25faed73d74ef7ba814f9e4f5f)
++++ b/test.py	(date 1741019591264)
+@@ -221,14 +221,14 @@
+     side_image  = cv2.imread("side_view.jpg")
+ 
+     if front_image is None or side_image is None:
+-        print("⚠️ Error: Could not load front_view.jpg or side_view.jpg")
++        print(" Error: Could not load front_view.jpg or side_view.jpg")
+         exit()
+ 
+     # Estimate distance from eyes in front image
+     depth_est = estimate_distance_from_eyes(front_image)
+     if depth_est is None:
+         depth_est = 2.0  # fallback if face detection fails
+-        print("⚠️ Could not detect face in front image. Falling back to depth=2.0 m")
++        print(" Could not detect face in front image. Falling back to depth=2.0 m")
+     else:
+         print(f"Estimated depth from eyes: {depth_est:.2f} m")
+ 
+@@ -237,24 +237,24 @@
+     height_m, stomach_back_m        = measure_side_view(side_image, depth_est)
+ 
+     if shoulder_width_m:
+-        print(f"📏 Shoulder Width: {shoulder_width_m:.2f} m")
++        print(f" Shoulder Width: {shoulder_width_m:.2f} m")
+     else:
+-        print("⚠️ Shoulder width not detected.")
++        print(" Shoulder width not detected.")
+ 
+     if waist_width_m:
+-        print(f"📏 Waist Width: {waist_width_m:.2f} m")
++        print(f" Waist Width: {waist_width_m:.2f} m")
+     else:
+-        print("⚠️ Waist width not detected.")
++        print(" Waist width not detected.")
+ 
+     if height_m:
+-        print(f"📏 Height: {height_m:.2f} m")
++        print(f" Height: {height_m:.2f} m")
+     else:
+-        print("⚠️ Height not detected.")
++        print(" Height not detected.")
+ 
+     if stomach_back_m:
+-        print(f"📏 Stomach-to-Back: {stomach_back_m:.2f} m")
++        print(f" Stomach-to-Back: {stomach_back_m:.2f} m")
+     else:
+-        print("⚠️ Stomach-to-back distance not detected.")
++        print(" Stomach-to-back distance not detected.")
+ 
+         # Get original dimensions
+         height, width = front_image.shape[:2]
+Index: main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import json\r\n\r\nimport cv2\r\nfrom face_analysis import estimate_distance_from_eyes\r\nfrom pose_analysis import measure_front_view, measure_side_view\r\n\r\nfront_image = cv2.imread(\"front_view.jpg\")\r\nside_image = cv2.imread(\"side_view.jpg\")\r\n\r\ndepth_est = estimate_distance_from_eyes(front_image) or 2.0\r\nprint(f\"Estimated depth: {depth_est:.2f} m\")\r\n\r\nshoulder_m, waist_m = measure_front_view(front_image, depth_est)\r\nheight_m, stomach_back_m = measure_side_view(side_image, depth_est)\r\n\r\nprint(f\"\uD83D\uDCCF Shoulder Width: {shoulder_m:.2f} m\" if shoulder_m else \"⚠\uFE0F Shoulder width not detected.\")\r\nprint(f\"\uD83D\uDCCF Waist Width: {waist_m:.2f} m\" if waist_m else \"⚠\uFE0F Waist width not detected.\")\r\nprint(f\"\uD83D\uDCCF Height: {height_m:.2f} m\" if height_m else \"⚠\uFE0F Height not detected.\")\r\nprint(f\"\uD83D\uDCCF Stomach-to-Back: {stomach_back_m:.2f} m\" if stomach_back_m else \"⚠\uFE0F Stomach-to-back not detected.\")\r\n\r\nmeasurement_data = {\r\n    \"depth_estimated\": depth_est,\r\n    \"shoulder_width_m\": shoulder_m if shoulder_m else None,\r\n    \"waist_width_m\": waist_m if waist_m else None,\r\n    \"height_m\": height_m if height_m else None,\r\n    \"stomach_to_back_m\": stomach_back_m if stomach_back_m else None\r\n}\r\n\r\n# Save to JSON file\r\njson_filename = \"measurements.json\"\r\nwith open(json_filename, \"w\") as json_file:\r\n    json.dump(measurement_data, json_file, indent=4)\r\n\r\nprint(f\"\uD83D\uDCC2 Measurements saved to {json_filename}\")\r\n
+===================================================================
+diff --git a/main.py b/main.py
+--- a/main.py	(revision d4cd86bd8b90ac25faed73d74ef7ba814f9e4f5f)
++++ b/main.py	(date 1741022654951)
+@@ -1,9 +1,8 @@
+ import json
+-
+ import cv2
+ from face_analysis import estimate_distance_from_eyes
+ from pose_analysis import measure_front_view, measure_side_view
+-
++gender = "male"
+ front_image = cv2.imread("front_view.jpg")
+ side_image = cv2.imread("side_view.jpg")
+ 
+@@ -13,12 +12,13 @@
+ shoulder_m, waist_m = measure_front_view(front_image, depth_est)
+ height_m, stomach_back_m = measure_side_view(side_image, depth_est)
+ 
+-print(f"📏 Shoulder Width: {shoulder_m:.2f} m" if shoulder_m else "⚠️ Shoulder width not detected.")
+-print(f"📏 Waist Width: {waist_m:.2f} m" if waist_m else "⚠️ Waist width not detected.")
+-print(f"📏 Height: {height_m:.2f} m" if height_m else "⚠️ Height not detected.")
+-print(f"📏 Stomach-to-Back: {stomach_back_m:.2f} m" if stomach_back_m else "⚠️ Stomach-to-back not detected.")
++print(f"📏 Shoulder Width: {shoulder_m:.2f} m" if shoulder_m else "Shoulder width not detected.")
++print(f"📏 Waist Width: {waist_m:.2f} m" if waist_m else "Waist width not detected.")
++print(f"📏 Height: {height_m:.2f} m" if height_m else "Height not detected.")
++print(f"📏 Stomach-to-Back: {stomach_back_m:.2f} m" if stomach_back_m else "Stomach-to-back not detected.")
+ 
+ measurement_data = {
++    "gender":gender,
+     "depth_estimated": depth_est,
+     "shoulder_width_m": shoulder_m if shoulder_m else None,
+     "waist_width_m": waist_m if waist_m else None,
+@@ -31,4 +31,4 @@
+ with open(json_filename, "w") as json_file:
+     json.dump(measurement_data, json_file, indent=4)
+ 
+-print(f"📂 Measurements saved to {json_filename}")
++print(f"Measurements saved to {json_filename}")

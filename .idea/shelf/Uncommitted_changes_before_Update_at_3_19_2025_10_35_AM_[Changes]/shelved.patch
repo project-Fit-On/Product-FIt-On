@@ -1,0 +1,16 @@
+Index: Command line
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>pip install opencv-python\r\npip install opencv-python-headless\r\npip install mediapipe\r\npip install numpy\r\npip install piexif\r\npip install python-multipart\r\npip install fastapi uvicorn python-multipart\r\n\r\n\r\n
+===================================================================
+diff --git a/Command line b/Command line
+--- a/Command line	(revision 1903e0f376bea28c1709203607fad688d1a26205)
++++ b/Command line	(date 1741296320455)
+@@ -5,5 +5,7 @@
+ pip install piexif
+ pip install python-multipart
+ pip install fastapi uvicorn python-multipart
++python.exe -m pip install --upgrade pip
++
+ 
+ 
