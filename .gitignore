@@ -1,0 +1,76 @@
+# ==================================================================
+# Unity-specific ignores
+# ==================================================================
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Ss]erialized[Oo]bjects/
+[Uu]ser[Ss]ettings/
+
+# Avoid committing crash reports, large temporary files, or built game data
+MemoryCaptures/
+CrashReports/
+
+# Visual Studio cache directory
+.vs/
+
+# Unity auto-generated files
+ExportedObj/
+.consulo/
+*.csproj
+*.unityproj
+*.sln
+*.swp
+*.pidb
+*.suo
+*.user
+*.userprefs
+*.unityproj
+*.booproj
+*.svd
+*.pdb
+*.mdb
+
+# Packages
+Packages/manifest.json.meta
+Packages/packages-lock.json
+
+# If you have Git dependencies in Packages, you may want to ignore them:
+# Packages/com.somepackage.git/
+
+# ==================================================================
+# OS-specific / Common files
+# ==================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Linux
+*~
+
+# ==================================================================
+# IDE / Editor-specific
+# ==================================================================
+
+# VS Code settings
+.vscode/
+
+# JetBrains Rider / IntelliJ
+.idea/
+*.iml
+
+# Visual Studio Code profiling data
+.vs/
+
+# ==================================================================
+# End of file
+# ==================================================================
