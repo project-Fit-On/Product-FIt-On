@@ -23,6 +23,9 @@ export default function Home() {
             <Link href="/catalog" className={styles.primaryButton}>
               Shop Now
             </Link>
+            <Link href="/dashboard" className={styles.secondaryButton}>
+              Go to Dashboard
+            </Link>
             <Link href="/how-it-works" className={styles.secondaryButton}>
               Learn More
             </Link>

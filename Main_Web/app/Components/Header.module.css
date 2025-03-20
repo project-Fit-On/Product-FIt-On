@@ -212,7 +212,11 @@
 
 /* Add a new style to ensure header doesn't create white space */
 .header {
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100; /* Ensure header is above all other content */
   width: 100%;
   z-index: 1000;
   top: 0;

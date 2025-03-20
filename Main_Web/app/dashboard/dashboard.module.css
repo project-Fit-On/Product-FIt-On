@@ -1,0 +1,432 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+.dashboardContainer {
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  background: linear-gradient(135deg, #f8f9fe 0%, #f1f3fa 100%);
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 140px; /* Adjusted to account for the header */
+  position: relative;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  position: sticky;
+  top: 90px; /* Adjusted to be below the header */
+  z-index: 50;
+}
+
+/* Remove search container and back to site styles */
+.logoSmall {
+  color: #7b68ee;
+  font-weight: 600;
+}
+
+.logoSmall h3 {
+  margin: 0;
+  color: #424a5e;
+}
+
+.notificationProfile {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.notificationIcon {
+  position: relative;
+  cursor: pointer;
+  color: #5e6a88;
+}
+
+.notificationBadge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #7b68ee;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.profileName {
+  font-weight: 500;
+  color: #424a5e;
+}
+
+.profileAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #7b68ee;
+}
+
+.dashboardLayout {
+  display: flex;
+  position: relative;
+}
+
+.sidebar {
+  width: 250px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 5px 0 20px rgba(0, 0, 0, 0.03);
+  padding: 2rem 0;
+  min-height: calc(100vh - 212px); /* Adjusted for header and topBar */
+  transition: all 0.3s ease;
+  position: sticky;
+  top: 162px; /* Adjusted for header and topBar */
+}
+
+.logoContainer {
+  padding: 0 1.5rem 2rem;
+  margin-bottom: 1rem;
+}
+
+.logo {
+  color: #7b68ee;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  color: #5e6a88;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-left: 4px solid transparent;
+}
+
+.navItem:hover {
+  background: rgba(123, 104, 238, 0.05);
+  color: #7b68ee;
+}
+
+.navItem.active {
+  background: rgba(123, 104, 238, 0.1);
+  color: #7b68ee;
+  font-weight: 500;
+  border-left: 4px solid #7b68ee;
+}
+
+.navIcon {
+  margin-right: 1rem;
+  font-size: 1.1rem;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.welcomeSection {
+  margin-bottom: 2.5rem;
+}
+
+.welcomeText {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  background: linear-gradient(135deg, #7b68ee 0%, #b668ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.welcomeSubtext {
+  color: #8a94a8;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.dashboardCard {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(123, 104, 238, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboardCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(123, 104, 238, 0.1);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #424a5e;
+  margin: 0;
+}
+
+.viewAllLink {
+  color: #7b68ee;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.viewAllLink:hover {
+  color: #5845e0;
+}
+
+.closetItems {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.closetItem {
+  text-align: center;
+}
+
+.itemImageContainer {
+  position: relative;
+  width: 100%;
+  padding-bottom: 120%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f5f6fa;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.itemImage {
+  object-fit: cover;
+}
+
+.itemName {
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+  color: #5e6a88;
+}
+
+.recommendationItems {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.recommendationItem {
+  position: relative;
+  text-align: center;
+}
+
+.matchBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(123, 104, 238, 0.9);
+  color: white;
+  border-radius: 20px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.shoppingStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.statItem {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(123, 104, 238, 0.03);
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+}
+
+.statItem:hover {
+  transform: scale(1.03);
+}
+
+.statCount {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #7b68ee;
+  margin-bottom: 0.5rem;
+}
+
+.statName {
+  font-size: 0.9rem;
+  color: #5e6a88;
+  margin: 0;
+}
+
+.activityCard {
+  grid-column: span 2;
+}
+
+.activityFeed {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.activityItem {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(123, 104, 238, 0.03);
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+}
+
+.activityItem:hover {
+  transform: translateX(5px);
+}
+
+.activityIcon {
+  background: rgba(123, 104, 238, 0.1);
+  color: #7b68ee;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.activityContent {
+  flex: 1;
+}
+
+.activityText {
+  margin: 0;
+  font-weight: 500;
+  color: #424a5e;
+}
+
+.activityTime {
+  margin: 0.25rem 0 0;
+  font-size: 0.8rem;
+  color: #8a94a8;
+}
+
+@media (max-width: 1024px) {
+  .dashboardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .activityCard {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboardContainer {
+    padding-top: 100px; /* Adjusted for smaller header */
+  }
+
+  .topBar {
+    top: 70px; /* Adjusted for smaller header */
+    padding: 0.75rem 1rem;
+  }
+
+  .logoSmall h3 {
+    font-size: 1rem;
+  }
+
+  .sidebar {
+    top: 132px; /* Adjusted for smaller header and topBar */
+    min-height: calc(
+      100vh - 172px
+    ); /* Adjusted for smaller header and topBar */
+  }
+
+  .topBar {
+    padding: 1rem;
+  }
+
+  .sidebar {
+    width: 80px;
+  }
+
+  .sidebar .navItem span {
+    display: none;
+  }
+
+  .sidebar .navIcon {
+    margin-right: 0;
+    font-size: 1.3rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .topBar {
+    padding: 0.75rem;
+  }
+
+  .searchContainer {
+    width: 150px;
+  }
+
+  .backToSite span {
+    display: none;
+  }
+
+  .backIcon {
+    margin-right: 0;
+  }
+
+  .mainContent {
+    padding: 1.5rem 1rem;
+  }
+
+  .welcomeText {
+    font-size: 1.5rem;
+  }
+}
