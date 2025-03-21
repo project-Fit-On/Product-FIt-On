@@ -1,71 +1,74 @@
 using UnityEngine;
-using ZXing; // from the ZXing library
-using ZXing.Common;
 using UnityEngine.UI;
+using ZXing;
+using ZXing.Common;
 using System.Collections.Generic;
 
 public class QRCodeScanner : MonoBehaviour
 {
     private WebCamTexture webCamTexture;
     private IBarcodeReader barcodeReader;
-    public RawImage rawImage;
 
-    // 1) Dictionary: QR code -> resource path
-    //    (Here, you assume you have prefab/.obj in "Assets/Resources/ClothModels")
+    [Header("UI References")]
+    public RawImage rawImage;
+    public RawImage rawImageParent;   // the camera feed
+    public GameObject backgroundPanel; // panel with the background image
+
+    [Header("Cloth Spawn")]
+    public Transform clothSpawnPoint; // where you want the cloth to appear
+    public float clothScaleFactor = 2f; // how big you want it
+
+    // Dictionary: QR code text -> path in Resources
     private Dictionary<string, string> clothMap = new Dictionary<string, string>
     {
         { "8822443311", "ClothModels/8822443311/8822443311" },
         {"886754321","ClothModels/886754321/886754321"}
-        // etc...
     };
 
     void Start()
     {
-        // 2) Initialize the barcode reader
+        // Initialize barcode reader
         barcodeReader = new BarcodeReader
         {
             AutoRotate = true,
-            Options = new DecodingOptions
-            {
-                TryHarder = true
-            }
+            Options = new DecodingOptions { TryHarder = true }
         };
 
-        // 3) Find a suitable camera device
+        // Start the camera feed
         WebCamDevice[] devices = WebCamTexture.devices;
-        if (devices != null && devices.Length > 0)
+        if (devices.Length > 0)
         {
-            // pick the first camera
-            string cameraName = devices[0].name;
-
-            // 4) Start the camera
-            webCamTexture = new WebCamTexture(cameraName, Screen.width, Screen.height);
+            webCamTexture = new WebCamTexture(devices[0].name, Screen.width, Screen.height);
             webCamTexture.Play();
-
-            // Show the camera feed on the RawImage
             rawImage.texture = webCamTexture;
         }
+
+        // Ensure background panel is hidden initially
+        if (backgroundPanel) backgroundPanel.SetActive(false);
     }
 
     void Update()
     {
         if (webCamTexture != null && webCamTexture.isPlaying)
         {
-            // Try decoding the current frame
             try
             {
                 Color32[] cameraFrame = webCamTexture.GetPixels32();
                 var result = barcodeReader.Decode(cameraFrame, webCamTexture.width, webCamTexture.height);
-
                 if (result != null)
                 {
                     Debug.Log("QR Code Detected: " + result.Text);
 
-                    // 5) Use the decoded text to look up and spawn the cloth
-                    OnQRCodeDetected(result.Text);
-
-                    // If you only want to scan once, stop the camera
+                    // Stop scanning + show cloth
                     webCamTexture.Stop();
+                    rawImage.gameObject.SetActive(false);
+                    rawImageParent.gameObject.SetActive(false);
+
+                    // Show background panel
+                    if (backgroundPanel) backgroundPanel.SetActive(true);
+
+                    // Now spawn the cloth
+                    SpawnCloth(result.Text);
                 }
             }
             catch (System.Exception ex)
@@ -75,46 +78,41 @@ public class QRCodeScanner : MonoBehaviour
         }
     }
 
-    private void OnQRCodeDetected(string qrSerial)
+    private void SpawnCloth(string serial)
     {
-        // Look up if there's a matching cloth resource path
-        if (clothMap.ContainsKey(qrSerial))
+        if (!clothMap.ContainsKey(serial))
         {
-            string resourcePath = clothMap[qrSerial];
+            Debug.LogWarning("No cloth mapping for serial: " + serial);
+            return;
+        }
 
-            // Load the model or prefab from Resources
-            // (Ensure you have something like "Assets/Resources/ClothModels/884231234567.prefab")
-            GameObject clothPrefab = Resources.Load<GameObject>(resourcePath);
+        // Load the prefab from Resources
+        string path = clothMap[serial];
+        GameObject clothPrefab = Resources.Load<GameObject>(path);
+        if (clothPrefab == null)
+        {
+            Debug.LogWarning("Could not load prefab from path: " + path);
+            return;
+        }
 
-            if (clothPrefab != null)
-            {
-                // Spawn at Vector3.zero or in front of camera
-                Camera mainCam = Camera.main;
-                if (mainCam != null)
-                {
-                    // Example: 2 units in front of camera
-                    Vector3 positionInFront = mainCam.transform.position + mainCam.transform.forward * 2f;
-                    GameObject spawnedCloth = Instantiate(clothPrefab, positionInFront, Quaternion.identity);
+        // Instantiate bigger and place it at the clothSpawnPoint
+        GameObject spawned = Instantiate(clothPrefab);
 
-                    // Optionally rotate it to face the camera
-                    spawnedCloth.transform.LookAt(mainCam.transform);
-
-                    Debug.Log("Spawned cloth for serial: " + qrSerial);
-                }
-                else
-                {
-                    // Fallback if there's no main camera
-                    Instantiate(clothPrefab, Vector3.zero, Quaternion.identity);
-                }
-            }
-            else
-            {
-                Debug.LogWarning("Could not load prefab from path: " + resourcePath);
-            }
+        // If you have a dedicated transform to position it:
+        if (clothSpawnPoint)
+        {
+            spawned.transform.position = clothSpawnPoint.position;
+            spawned.transform.rotation = clothSpawnPoint.rotation;
         }
         else
         {
-            Debug.Log("No matching cloth found for serial: " + qrSerial);
+            // fallback if no clothSpawnPoint is set
+            spawned.transform.position = new Vector3(0f, 0f, 1f);
         }
+
+        // Make it bigger
+        spawned.transform.localScale = spawned.transform.localScale * clothScaleFactor;
+
+        Debug.Log("Spawned cloth: " + serial);
     }
 }
