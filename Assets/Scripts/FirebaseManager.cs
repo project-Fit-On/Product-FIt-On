@@ -6,12 +6,14 @@ using Firebase.Extensions;
 
 public class FirebaseManager : MonoBehaviour
 {
-    public static FirebaseManager Instance;
+    public static FirebaseManager Instance { get; private set; }
+
     public FirebaseAuth Auth { get; private set; }
     public FirebaseFirestore Db { get; private set; }
 
     void Awake()
     {
+        // Make sure only one instance exists
         if (Instance == null)
         {
             Instance = this;
@@ -26,18 +28,19 @@ public class FirebaseManager : MonoBehaviour
 
     private void InitializeFirebase()
     {
+        Debug.Log("Checking Firebase dependencies...");
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
-            var status = task.Result;
-            if (status == DependencyStatus.Available)
+            if (task.Result == DependencyStatus.Available)
             {
+                Debug.Log("Firebase dependencies are available.");
                 Auth = FirebaseAuth.DefaultInstance;
                 Db = FirebaseFirestore.DefaultInstance;
                 Debug.Log("Firebase initialized successfully!");
             }
             else
             {
-                Debug.LogError("Could not resolve all Firebase dependencies: " + status);
+                Debug.LogError($"Could not resolve all Firebase dependencies: {task.Result}");
             }
         });
     }
