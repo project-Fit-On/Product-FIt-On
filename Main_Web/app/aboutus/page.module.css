@@ -116,6 +116,10 @@
 }
 
 /* Offer Section */
+.offerSection {
+  position: relative;
+}
+
 .offerGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -157,6 +161,10 @@
 }
 
 /* Vision Section */
+.visionSection {
+  position: relative;
+}
+
 .visionContainer {
   display: flex;
   align-items: center;
@@ -177,6 +185,10 @@
 }
 
 /* Story Section */
+.storySection {
+  position: relative;
+}
+
 .teamGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -185,6 +197,10 @@
 }
 
 /* Why Choose Us Section */
+.whySection {
+  position: relative;
+}
+
 .whyGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
