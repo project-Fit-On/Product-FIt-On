@@ -25,11 +25,11 @@ export default function Header() {
       <nav className={styles.navbar}>
         <div className={styles["nav-container"]}>
           <div className={styles["nav-left"]}>
+            <Link href="/" className={styles["nav-link"]}>
+              Home
+            </Link>
             <Link href="/aboutus" className={styles["nav-link"]}>
               About Us
-            </Link>
-            <Link href="/services" className={styles["nav-link"]}>
-              Services
             </Link>
           </div>
 
@@ -48,11 +48,11 @@ export default function Header() {
           </div>
 
           <div className={styles["nav-right"]}>
-            <Link href="/catalog" className={styles["nav-link"]}>
-              Catalog
+            <Link href="/faq" className={styles["nav-link"]}>
+              FAQ
             </Link>
-            <Link href="/contact" className={styles["nav-link"]}>
-              Contact
+            <Link href="/contactus" className={styles["nav-link"]}>
+              Contact Us
             </Link>
             <Link href="/login" className={styles["login-button"]}>
               Login
@@ -105,6 +105,13 @@ export default function Header() {
 
         <div className={styles["mobile-links"]}>
           <Link
+            href="/"
+            className={styles["mobile-link"]}
+            onClick={toggleMobileMenu}
+          >
+            Home
+          </Link>
+          <Link
             href="/aboutus"
             className={styles["mobile-link"]}
             onClick={toggleMobileMenu}
@@ -112,25 +119,18 @@ export default function Header() {
             About Us
           </Link>
           <Link
-            href="/services"
+            href="/faq"
             className={styles["mobile-link"]}
             onClick={toggleMobileMenu}
           >
-            Services
+            FAQ
           </Link>
           <Link
-            href="/catalog"
+            href="/contactus"
             className={styles["mobile-link"]}
             onClick={toggleMobileMenu}
           >
-            Catalog
-          </Link>
-          <Link
-            href="/contact"
-            className={styles["mobile-link"]}
-            onClick={toggleMobileMenu}
-          >
-            Contact
+            Contact Us
           </Link>
           <Link
             href="/login"
