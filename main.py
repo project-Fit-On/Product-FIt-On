@@ -1,7 +1,7 @@
 import os
 import shutil
 import uvicorn
-from fastapi import FastAPI, File, UploadFile, HTTPException, Form
+from fastapi import FastAPI, File, UploadFile, HTTPException, Form, Body
 import secrets
 from pathlib import Path
 from starlette.responses import FileResponse
@@ -62,12 +62,13 @@ async def upload_side_images(
 
     return {"message": "Images uploaded successfully","side_image": str(side_path)}
 
+
+
 @app.post("/upload/gender")
-async def upload_side_images(
-        Gender: str = Form(...)):
+async def upload_gender(Gender: str = Body(...)):  # ✅ Accept JSON body
     print("POST request received on /upload")
     setGender(Gender)
-    return {"message": "Gender uploaded successfully","Gender": str(Gender)}
+    return {"message": "Gender uploaded successfully", "Gender": str(Gender)}
 
 
 
