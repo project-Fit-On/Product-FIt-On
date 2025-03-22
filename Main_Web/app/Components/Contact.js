@@ -1,6 +1,12 @@
 "use client";
 import { useState } from "react";
 import styles from "./Contact.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMapMarkerAlt,
+  faPhone,
+  faEnvelope,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +16,8 @@ const Contact = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,19 +27,36 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would normally handle the form submission to your backend
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    setError(null);
 
-    // Simulate a successful submission
-    setIsSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
+    try {
+      const response = await fetch("https://formspree.io/f/mrbpqzzl", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Reset the success message after 5 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 5000);
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+
+        // Reset the success message after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 5000);
+      } else {
+        throw new Error("Failed to submit form. Please try again later.");
+      }
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -48,7 +73,9 @@ const Contact = () => {
 
             <div className={styles.contactMethods}>
               <div className={styles.contactMethod}>
-                <div className={styles.methodIcon}>📍</div>
+                <div className={styles.methodIcon}>
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                </div>
                 <div>
                   <h3>Visit Us</h3>
                   <p>
@@ -60,7 +87,9 @@ const Contact = () => {
               </div>
 
               <div className={styles.contactMethod}>
-                <div className={styles.methodIcon}>📞</div>
+                <div className={styles.methodIcon}>
+                  <FontAwesomeIcon icon={faPhone} />
+                </div>
                 <div>
                   <h3>Call Us</h3>
                   <p>+1 (800) 123-4567</p>
@@ -68,7 +97,9 @@ const Contact = () => {
               </div>
 
               <div className={styles.contactMethod}>
-                <div className={styles.methodIcon}>✉️</div>
+                <div className={styles.methodIcon}>
+                  <FontAwesomeIcon icon={faEnvelope} />
+                </div>
                 <div>
                   <h3>Email Us</h3>
                   <p>support@fiton-app.com</p>
@@ -85,6 +116,8 @@ const Contact = () => {
                 Thank you for your message! We'll get back to you soon.
               </div>
             )}
+
+            {error && <div className={styles.errorMessage}>{error}</div>}
 
             <form onSubmit={handleSubmit}>
               <div className={styles.formGroup}>
@@ -123,8 +156,12 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button type="submit" className={styles.submitButton}>
-                Send Message
+              <button
+                type="submit"
+                className={styles.submitButton}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>
