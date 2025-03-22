@@ -25,8 +25,8 @@ export default function Header() {
       <nav className={styles.navbar}>
         <div className={styles["nav-container"]}>
           <div className={styles["nav-left"]}>
-            <Link href="/about" className={styles["nav-link"]}>
-              About
+            <Link href="/aboutus" className={styles["nav-link"]}>
+              About Us
             </Link>
             <Link href="/services" className={styles["nav-link"]}>
               Services
@@ -105,11 +105,11 @@ export default function Header() {
 
         <div className={styles["mobile-links"]}>
           <Link
-            href="/about"
+            href="/aboutus"
             className={styles["mobile-link"]}
             onClick={toggleMobileMenu}
           >
-            About
+            About Us
           </Link>
           <Link
             href="/services"
