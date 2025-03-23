@@ -79,9 +79,9 @@ const Contact = () => {
                 <div>
                   <h3>Visit Us</h3>
                   <p>
-                    123 Fashion Avenue, Design District
+                    IIT SP BUILDING
                     <br />
-                    San Francisco, CA 94105
+                    Bambalapitiya ,Colombo
                   </p>
                 </div>
               </div>
@@ -92,7 +92,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3>Call Us</h3>
-                  <p>+1 (800) 123-4567</p>
+                  <p>+94 (71) 123-4567</p>
                 </div>
               </div>
 
@@ -102,7 +102,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3>Email Us</h3>
-                  <p>support@fiton-app.com</p>
+                  <p>support@myfiton.com</p>
                 </div>
               </div>
             </div>
