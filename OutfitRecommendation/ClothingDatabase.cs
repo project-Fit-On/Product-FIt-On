@@ -12,10 +12,10 @@ public class ClothingDatabase : MonoBehaviour
 
     void LoadSampleData()
     {
-        ClothingItems.Add(new ClothingItem("Blue T-Shirt", "Shirt", "Blue", "Summer", "Casual"));
-        ClothingItems.Add(new ClothingItem("Black Hoodie", "Shirt", "Black", "Winter", "Casual"));
-        ClothingItems.Add(new ClothingItem("Jeans", "Pants", "Blue", "All", "Casual"));
-        ClothingItems.Add(new ClothingItem("Formal Shoes", "Shoes", "Black", "All", "Formal"));
-        ClothingItems.Add(new ClothingItem("Sneakers", "Shoes", "White", "All", "Casual"));
+            ClothingItems.Add(new ClothingItem("Sneakers", "Shoes", "White", "All", "Casual"));
+            ClothingItems.Add(new ClothingItem("Jeans", "Pants", "Blue", "All", "Casual"));
+            ClothingItems.Add(new ClothingItem("Blue T-Shirt", "Shirt", "Blue", "Summer", "Casual"));
+            ClothingItems.Add(new ClothingItem("Formal Shoes", "Shoes", "Black", "All", "Formal"));
+            ClothingItems.Add(new ClothingItem("Black Hoodie", "Shirt", "Black", "Winter", "Casual"));
     }
 }
