@@ -36,15 +36,6 @@ export default function Footer() {
                 <li>
                   <Link href="/aboutus">About Us</Link>
                 </li>
-                <li>
-                  <Link href="/catalog">Shop</Link>
-                </li>
-                <li>
-                  <Link href="/services">Services</Link>
-                </li>
-                <li>
-                  <Link href="/contactus">Contact Us</Link>
-                </li>
               </ul>
             </div>
 
@@ -55,16 +46,7 @@ export default function Footer() {
                   <Link href="/faq">FAQ</Link>
                 </li>
                 <li>
-                  <Link href="/shipping">Shipping</Link>
-                </li>
-                <li>
-                  <Link href="/returns">Returns</Link>
-                </li>
-                <li>
-                  <Link href="/privacy">Privacy Policy</Link>
-                </li>
-                <li>
-                  <Link href="/terms">Terms of Service</Link>
+                  <Link href="/contactus">Contact Us</Link>
                 </li>
               </ul>
             </div>
@@ -161,55 +143,6 @@ export default function Footer() {
             <p className={styles.copyright}>
               © {currentYear} FitOn. All rights reserved.
             </p>
-            <div className={styles.paymentMethods}>
-              <span>Payment Methods:</span>
-              <div className={styles.paymentIcons}>
-                <div className={styles.paymentIcon}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    height="20"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path d="M22 6h-7.25a.75.75 0 1 0 0 1.5H22v9a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 16.5v-9H3.75a.75.75 0 1 0 0-1.5H2a2 2 0 0 0-2 2v9a3 3 0 0 0 3 3h17a3 3 0 0 0 3-3V8a2 2 0 0 0-1-1.732zM15 3a3 3 0 0 0-3 3h-3a3 3 0 0 0-3-3h9z" />
-                  </svg>
-                </div>
-                <div className={styles.paymentIcon}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    height="20"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path d="M1 4h22v2H1V4zm0 14h22v2H1v-2zm18.622-3.086l-.174-.87h-1.949l-.31.863-1.562.003L18.75 5.8h1.44l3.35 9.111h-1.49l-.174.003zM7.872 9.106H3.584v1.142h3.992v1.022H3.584v1.148h4.296v1.107H2.241V8h5.631v1.106zm3.541 4.313c-.697 0-1.355-.355-1.345-1.107.007-.714.456-1.13 1.284-1.342.462-.118 1.347-.196 1.998-.396v.67c0 1.15-.627 2.175-1.937 2.175zm2.824-4.036c0-.511-.26-.937-.825-1.026-.325-.051-1.101-.068-1.845.01-.311.035-.621.074-.936.127l-.126-1.032c.457-.106.943-.157 1.429-.157 1.023 0 1.975.175 2.456.487.713.33 1.073.991 1.073 2.224v3.273h-1.2l-.105-.724c-.32.31-.796.576-1.324.7-.563.13-1.156.122-1.756-.044-1.083-.318-1.669-1.109-1.669-2.202 0-1.076.635-1.94 1.67-2.307.829-.296 1.998-.276 3.138-.062l.02.763zM11.46 7.121l.526 3.193a7.35 7.35 0 0 0 .164 1.483h1.2c-.063-.356-.105-.735-.158-1.161L12.74 7.12h-1.28zm8.753 0l-.484 2.637c-.083.431-.13.815-.164 1.17h1.2c.03-.34.093-.72.164-1.142l.496-2.664h-1.212z" />
-                  </svg>
-                </div>
-                <div className={styles.paymentIcon}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    height="20"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path d="M15 17a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15zM2 2h4v20H2V2z" />
-                  </svg>
-                </div>
-                <div className={styles.paymentIcon}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    height="20"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm9.5 10a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
-                  </svg>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

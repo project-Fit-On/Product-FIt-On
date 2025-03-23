@@ -295,10 +295,10 @@ const HowItWorks = () => {
               <span className={styles.buttonIcon}>📱</span>
               Download iOS App
             </button>
-            <button className={`${styles.ctaButton} ${styles.webButton}`}>
+            {/* <button className={`${styles.ctaButton} ${styles.webButton}`}>
               <span className={styles.buttonIcon}>🌐</span>
               Start with Web Version
-            </button>
+            </button> */}
           </div>
         </section>
       </div>

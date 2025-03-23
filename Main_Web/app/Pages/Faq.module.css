@@ -1,0 +1,138 @@
+.faqContainer {
+  width: 100%;
+  padding: 120px 5% 80px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: calc(100vh - 200px); /* Adjusted to leave space for footer */
+  display: flex;
+  flex-direction: column;
+}
+
+.faqMainContent {
+  flex: 1;
+}
+
+.faqHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #00205b 0%, #0056b3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #6c757d;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.faqContent {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faqSection {
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #00205b;
+  display: inline-block;
+}
+
+.accordionItem {
+  background: white;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.accordionItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.accordionButton {
+  width: 100%;
+  padding: 20px 25px;
+  text-align: left;
+  background: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #00205b;
+  transition: all 0.2s ease;
+}
+
+.accordionButton:hover {
+  background-color: #f8f9fa;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.rotate {
+  transform: rotate(45deg);
+}
+
+.accordionContent {
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.accordionContentOpen {
+  padding: 5px 25px 25px;
+  max-height: 300px;
+}
+
+.answer {
+  color: #495057;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .faqContainer {
+    padding: 100px 20px 60px;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .accordionButton {
+    font-size: 1rem;
+    padding: 15px 20px;
+  }
+
+  .accordionContentOpen {
+    padding: 5px 20px 20px;
+  }
+}

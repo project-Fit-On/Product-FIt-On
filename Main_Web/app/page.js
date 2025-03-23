@@ -20,14 +20,11 @@ export default function Home() {
           </p>
 
           <div className={styles.buttonContainer}>
-            <Link href="/catalog" className={styles.primaryButton}>
-              Shop Now
+            <Link href="#" className={styles.primaryButton}>
+              Download IOS App
             </Link>
-            <Link href="/dashboard" className={styles.secondaryButton}>
-              Go to Dashboard
-            </Link>
-            <Link href="/how-it-works" className={styles.secondaryButton}>
-              Learn More
+            <Link href="/contactus" className={styles.secondaryButton}>
+              Contact Us
             </Link>
           </div>
         </div>

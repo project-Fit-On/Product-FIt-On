@@ -54,8 +54,8 @@ export default function Header() {
             <Link href="/contactus" className={styles["nav-link"]}>
               Contact Us
             </Link>
-            <Link href="/login" className={styles["login-button"]}>
-              Login
+            <Link href="#" className={styles["login-button"]}>
+              Download APP
             </Link>
           </div>
 
@@ -86,7 +86,7 @@ export default function Header() {
         <div className={styles["mobile-logo-container"]}>
           <Link href="/">
             <Image
-              src="/logo-white.png"
+              src="/img/logo.png"
               alt="FitOn Logo"
               width={60}
               height={60}
