@@ -49,6 +49,26 @@ public class QRCodeScanner : MonoBehaviour
 
     void Update()
     {
+        if (webCamTexture != null && rawImage != null)
+        {
+            // 1) Read the rotation angle from the camera
+            int rotation = webCamTexture.videoRotationAngle;
+
+            // 2) Apply a rotation to the RawImage rect transform
+            rawImage.rectTransform.localEulerAngles = new Vector3(0, 0, -rotation);
+
+            // 3) Check if the image is vertically flipped
+            if (webCamTexture.videoVerticallyMirrored)
+            {
+                // Flip the UV rect on the Y-axis
+                rawImage.uvRect = new Rect(0, 1, 1, -1);
+            }
+            else
+            {
+                // Reset to normal
+                rawImage.uvRect = new Rect(0, 0, 1, 1);
+            }
+        }
         if (webCamTexture != null && webCamTexture.isPlaying)
         {
             try

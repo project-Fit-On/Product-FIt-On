@@ -10,29 +10,28 @@ public class RotateOnDrag : MonoBehaviour
 
     void Update()
     {
-        // Check if left mouse button or single touch is held down
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("Mouse down! Starting drag.");
             isDragging = true;
             lastMousePosition = Input.mousePosition;
         }
         else if (Input.GetMouseButtonUp(0))
         {
+            Debug.Log("Mouse up! Ending drag.");
             isDragging = false;
         }
 
         if (isDragging)
         {
-            // Calculate how far the mouse/touch has moved horizontally
             Vector3 delta = Input.mousePosition - lastMousePosition;
+            Debug.Log("Dragging... delta.x = " + delta.x);
 
-            // Rotate around Y-axis only
-            // (A positive delta.x means user dragged to the right, so rotate accordingly)
             float rotationAmount = delta.x * rotationSpeed * Time.deltaTime;
             transform.Rotate(0f, -rotationAmount, 0f, Space.World);
 
-            // Save current mouse position for next frame
             lastMousePosition = Input.mousePosition;
         }
     }
+
 }

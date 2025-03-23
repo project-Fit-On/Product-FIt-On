@@ -20,12 +20,12 @@ MonoBehaviour:
     rid: 6497378831314976830
   m_OverrideGlobalSceneList: 1
   m_Scenes:
-  - m_enabled: 0
+  - m_enabled: 1
     m_path: Assets/Scenes/SampleScene.unity
   - m_enabled: 1
-    m_path: Assets/Scenes/Features.unity
-  - m_enabled: 0
     m_path: Assets/Scenes/AR_Session.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Features.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings:
