@@ -1,0 +1,31 @@
+{
+  "project_info": {
+    "project_number": "115648783380",
+    "project_id": "zinc-code-453014-d2",
+    "storage_bucket": "zinc-code-453014-d2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115648783380:ios:613863b037cd4c55a2f301",
+        "android_client_info": {
+          "package_name": "com.fiton.myfiton"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOps3GUzLO3847_XqcL0tQ_a1vLcs5lf4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 0
+        },
+        "appinvite_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
