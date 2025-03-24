@@ -18,6 +18,7 @@ public class ClothingRecommender : MonoBehaviour
     {
         return clothingDatabase.ClothingItems
             .Where(item => (item.Season == currentSeason || item.Season == "All") && item.Style == preferredStyle)
+            .OrderBy(item => item.Type) // 🔸 Added this line to sort by Type alphabetically
             .ToList();
     }
 
