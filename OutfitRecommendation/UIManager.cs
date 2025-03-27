@@ -24,7 +24,8 @@ public class UIManager : MonoBehaviour
         recommendationText.text = "Recommended Outfit:\n";
         foreach (var item in outfit)
         {
-            recommendationText.text += $"{item.Name} ({item.Type})\n";
+            // 🔸 Modified this line to include color info
+            recommendationText.text += $"{item.Name} ({item.Type}) - {item.Color}\n";
         }
     }
 }
