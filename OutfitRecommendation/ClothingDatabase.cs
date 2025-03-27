@@ -18,5 +18,7 @@ public class ClothingDatabase : MonoBehaviour
         ClothingItems.Add(new ClothingItem("Formal Shoes", "Shoes", "Black", "All", "Formal"));
         ClothingItems.Add(new ClothingItem("Sneakers", "Shoes", "White", "All", "Casual"));
         ClothingItems.Add(new ClothingItem("White Shirt", "Shirt", "White", "All", "Formal"));
+
+        ClothingItems.Add(new ClothingItem("Grey Shorts", "Pants", "Grey", "Summer", "Casual")); // 🔸 Added this line
     }
 }
