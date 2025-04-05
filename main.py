@@ -9,6 +9,8 @@ from ModelCreation import modelCreation
 from ModelCreation import setGender
 from mangum import Mangum
 
+from camera_specs import set_cam_data
+
 # Create FastAPI instance
 app = FastAPI()
 handler = Mangum(app)
@@ -54,7 +56,7 @@ async def upload_side_images(
         side_view: UploadFile = File(...)):
     print("POST request received on /upload")
     allowed_extensions = {".jpg", ".jpeg", ".png"}
-    if not ( side_view.filename.endswith(tuple(allowed_extensions))):
+    if not (side_view.filename.endswith(tuple(allowed_extensions))):
         return {"error": "Only JPG and PNG files are allowed"}
     side_path = UPLOAD_FOLDER / "side_view.jpg"
     with open(side_path, "wb") as buffer:
@@ -74,8 +76,9 @@ async def upload_gender(Gender: str = Body(...)):  # ✅ Accept JSON body
 
 @app.get("/process")
 def process_images():
-     modelCreation()
-     return {"message": "Model Created Succesfully"}
+    set_cam_data()
+    modelCreation()
+    return {"message": "Model Created Succesfully"}
 
 # Get exported 3D model
 @app.get("/download")

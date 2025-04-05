@@ -6,7 +6,10 @@ SENSOR_WIDTH_MM = 9.0
 SENSOR_HEIGHT_MM = 7.0
 DEFAULT_FOCAL_LENGTH_MM = 5.7
 
-
+IMAGE_WIDTH_PIXELS, IMAGE_HEIGHT_PIXELS = 6048, 4524
+FOCAL_LENGTH_MM =  24
+FOCAL_LENGTH_X_PIXELS = 3418
+FOCAL_LENGTH_Y_PIXELS = 3418
 def get_image_size(image_path):
     """Returns the width and height of the image."""
     try:
@@ -45,20 +48,21 @@ def compute_focal_length():
         return focal_front
     return (focal_front + focal_side) / 2
 
+def set_cam_data():
+    # Get image dimensions from front view image
+    IMAGE_WIDTH_PIXELS, IMAGE_HEIGHT_PIXELS = get_image_size(r"uploads/front_view.jpg")
+    if IMAGE_WIDTH_PIXELS is None or IMAGE_HEIGHT_PIXELS is None:
+        IMAGE_WIDTH_PIXELS, IMAGE_HEIGHT_PIXELS = 6048, 4524  # Default values
 
-# Get image dimensions from front view image
-IMAGE_WIDTH_PIXELS, IMAGE_HEIGHT_PIXELS = get_image_size(r"uploads/front_view.jpg")
-if IMAGE_WIDTH_PIXELS is None or IMAGE_HEIGHT_PIXELS is None:
-    IMAGE_WIDTH_PIXELS, IMAGE_HEIGHT_PIXELS = 6048, 4524  # Default values
+    # Compute focal length values
+    FOCAL_LENGTH_MM = compute_focal_length()
+    FOCAL_LENGTH_X_PIXELS = (FOCAL_LENGTH_MM / SENSOR_WIDTH_MM) * IMAGE_WIDTH_PIXELS
+    FOCAL_LENGTH_Y_PIXELS = (FOCAL_LENGTH_MM / SENSOR_HEIGHT_MM) * IMAGE_HEIGHT_PIXELS
 
-# Compute focal length values
-FOCAL_LENGTH_MM = compute_focal_length()
-FOCAL_LENGTH_X_PIXELS = (FOCAL_LENGTH_MM / SENSOR_WIDTH_MM) * IMAGE_WIDTH_PIXELS
-FOCAL_LENGTH_Y_PIXELS = (FOCAL_LENGTH_MM / SENSOR_HEIGHT_MM) * IMAGE_HEIGHT_PIXELS
+    # Output results
+    print(f"Image Resolution: {IMAGE_WIDTH_PIXELS}x{IMAGE_HEIGHT_PIXELS}")
+    print(f"Computed Focal Length (mm): {FOCAL_LENGTH_MM:.2f}")
+    print(f"Focal Length in X Pixels: {FOCAL_LENGTH_X_PIXELS:.2f}")
+    print(f"Focal Length in Y Pixels: {FOCAL_LENGTH_Y_PIXELS:.2f}")
 
-#Output results
-print(f"Image Resolution: {IMAGE_WIDTH_PIXELS}x{IMAGE_HEIGHT_PIXELS}")
-print(f"Computed Focal Length (mm): {FOCAL_LENGTH_MM:.2f}")
-print(f"Focal Length in X Pixels: {FOCAL_LENGTH_X_PIXELS:.2f}")
-print(f"Focal Length in Y Pixels: {FOCAL_LENGTH_Y_PIXELS:.2f}")
 

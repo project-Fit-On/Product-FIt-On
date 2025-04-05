@@ -1,10 +1,13 @@
 import cv2
 import mediapipe as mp
 import numpy as np
+
 from camera_specs import FOCAL_LENGTH_X_PIXELS, FOCAL_LENGTH_Y_PIXELS
 
 mp_pose = mp.solutions.pose
 pose = mp_pose.Pose()
+
+
 
 def detect_keypoints(image):
     img_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -93,3 +96,4 @@ def measure_side_view(image, depth):
         print(f"[DEBUG] Stomach-Back thickness (m): {stomach_back_m:.2f}")
 
     return height_m, stomach_back_m
+
