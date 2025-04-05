@@ -76,7 +76,7 @@ def process_images():
      modelCreation()
      return {"message": "Model Created Succesfully"}
 
-# Get exported 3D model
+# Get generated 3D model
 @app.get("/download")
 def download_model():
     export_path = EXPORT_FOLDER / "optimized_model.fbx"
