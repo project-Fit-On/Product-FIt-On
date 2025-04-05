@@ -70,7 +70,6 @@ async def upload_side_images(
     return {"message": "Gender uploaded successfully","Gender": str(Gender)}
 
 
-
 @app.get("/process")
 def process_images():
      modelCreation()

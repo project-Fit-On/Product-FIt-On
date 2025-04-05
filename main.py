@@ -8,7 +8,7 @@ from starlette.responses import FileResponse
 from ModelCreation import modelCreation
 from ModelCreation import setGender
 from mangum import Mangum
-#commit
+
 # Create FastAPI instance
 app = FastAPI()
 handler = Mangum(app)
