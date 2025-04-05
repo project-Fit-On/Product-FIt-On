@@ -8,32 +8,21 @@ from starlette.responses import FileResponse
 from ModelCreation import modelCreation
 from ModelCreation import setGender
 from mangum import Mangum
-
 from camera_specs import set_cam_data
 
 # Create FastAPI instance
 app = FastAPI()
 handler = Mangum(app)
 
-# Store API keys (In production, store securely in a database or environment variable)
-API_KEYS = {"user": secrets.token_hex(16)}
 
 # Directory paths
 BASE_DIR = Path(__file__).resolve().parent  # Get the current script directory
 UPLOAD_FOLDER = BASE_DIR / "uploads"
 EXPORT_FOLDER = BASE_DIR / "exports"
 
-
 # Ensure directories exist
 UPLOAD_FOLDER.mkdir(parents=True, exist_ok=True)
 EXPORT_FOLDER.mkdir(parents=True, exist_ok=True)
-
-
-# API Key Dependency
-def verify_api_key(api_key: str):
-    if api_key not in API_KEYS.values():
-        raise HTTPException(status_code=403, detail="Invalid API Key")
-    return api_key
 
 
 # Upload images endpoint
