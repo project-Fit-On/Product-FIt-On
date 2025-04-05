@@ -1,7 +1,7 @@
 import json
 import trimesh
 import cv2
-from trimesh.smoothing import filter_laplacian, filter_taubin
+
 
 from face_analysis import estimate_distance_from_eyes
 from pose_analysis import measure_front_view, measure_side_view
