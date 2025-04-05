@@ -14,7 +14,7 @@ app = FastAPI()
 handler = Mangum(app)
 
 # Store API keys (In production, store securely in a database or environment variable)
-API_KEYS = {"user1": secrets.token_hex(16)}
+API_KEYS = {"user": secrets.token_hex(16)}
 
 # Directory paths
 BASE_DIR = Path(__file__).resolve().parent  # Get the current script directory
