@@ -39,6 +39,7 @@ async def upload_front_images(
         shutil.copyfileobj(front_view.file, buffer)
 
     return {"message": "Images uploaded successfully", "front_image": str(front_path)}
+
 @app.post("/upload/sideView")
 async def upload_side_images(
         side_view: UploadFile = File(...)):
@@ -49,9 +50,9 @@ async def upload_side_images(
     side_path = UPLOAD_FOLDER / "side_view.jpg"
     with open(side_path, "wb") as buffer:
         shutil.copyfileobj(side_view.file, buffer)
-
+    set_cam_data()
+    modelCreation()
     return {"message": "Images uploaded successfully","side_image": str(side_path)}
-
 
 
 @app.post("/upload/gender")
@@ -59,7 +60,6 @@ async def upload_gender(Gender: str = Body(...)):  # ✅ Accept JSON body
     print("POST request received on /upload")
     setGender(Gender)
     return {"message": "Gender uploaded successfully", "Gender": str(Gender)}
-
 
 
 @app.get("/process")

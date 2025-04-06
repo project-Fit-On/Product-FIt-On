@@ -1,8 +1,8 @@
 {
-    "gender": "male",
+    "gender": "----------------------------744095603189472877722196\r\nContent-Disposition: form-data; name=\"Gender\"\r\n\r\nfemale\r\n----------------------------744095603189472877722196--\r\n",
     "depth_estimated": 2.0,
-    "shoulder_width_m": 0.3566027874748864,
-    "waist_width_m": 0.19203300139582646,
-    "height_m": 1.7192110703963464,
-    "stomach_to_back_m": 0.5734422206079787
+    "shoulder_width_m": 0.07784308384077197,
+    "waist_width_m": 0.03920421299005266,
+    "height_m": 1.8256298667684956,
+    "stomach_to_back_m": 0.5905753757333971
 }
