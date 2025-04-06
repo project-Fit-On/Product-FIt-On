@@ -56,7 +56,7 @@ async def upload_side_images(
 
 
 @app.post("/upload/gender")
-async def upload_gender(Gender: str = Body(...)):  # ✅ Accept JSON body
+async def upload_gender(Gender: str = Body(...)):  # Accept JSON body
     print("POST request received on /upload")
     setGender(Gender)
     return {"message": "Gender uploaded successfully", "Gender": str(Gender)}
