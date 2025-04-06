@@ -50,8 +50,6 @@ async def upload_side_images(
     side_path = UPLOAD_FOLDER / "side_view.jpg"
     with open(side_path, "wb") as buffer:
         shutil.copyfileobj(side_view.file, buffer)
-    set_cam_data()
-    modelCreation()
     return {"message": "Images uploaded successfully","side_image": str(side_path)}
 
 
@@ -71,6 +69,8 @@ def process_images():
 # Get exported 3D model
 @app.get("/download")
 def download_model():
+    set_cam_data()
+    modelCreation()
     export_path = EXPORT_FOLDER / "optimized_model.obj"
     if not export_path.exists():
         raise HTTPException(status_code=404, detail="3D model not found")
