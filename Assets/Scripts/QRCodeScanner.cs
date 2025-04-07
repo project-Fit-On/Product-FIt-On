@@ -16,6 +16,10 @@ public class QRCodeScanner : MonoBehaviour
 
     [Header("Cloth Spawn")]
     public Transform clothSpawnPoint; // where you want the cloth to appear
+
+    [Header("Cloth Management")]
+    public Transform clothParent; // Assign this to an empty GameObject in the scene
+
     public float clothScaleFactor = 2f; // how big you want it
 
     // Dictionary: QR code text -> path in Resources
@@ -98,6 +102,57 @@ public class QRCodeScanner : MonoBehaviour
         }
     }
 
+    public void StartCamera()
+    {
+        if (webCamTexture == null)
+        {
+            WebCamDevice[] devices = WebCamTexture.devices;
+            if (devices.Length > 0)
+            {
+                webCamTexture = new WebCamTexture(devices[0].name, Screen.width, Screen.height);
+            }
+        }
+
+        if (webCamTexture != null && !webCamTexture.isPlaying)
+        {
+            webCamTexture.Play();
+            rawImage.texture = webCamTexture;
+
+            rawImage.gameObject.SetActive(true);
+            rawImageParent.gameObject.SetActive(true);
+        }
+    }
+
+    public void StopCamera()
+    {
+
+        if (webCamTexture != null)
+        {
+            if (webCamTexture.isPlaying)
+            {
+                webCamTexture.Stop();
+                Debug.Log("Camera stopped.");
+            }
+
+            // Clear the RawImage to release any frame buffer
+            if (rawImage != null)
+            {
+                rawImage.texture = null;
+            }
+
+            // Nullify and destroy the WebCamTexture completely (important on macOS)
+            webCamTexture = null;
+            Resources.UnloadUnusedAssets(); // Optional: prompt Unity to GC unused stuff
+        }
+
+        if (rawImage.gameObject.activeSelf)
+            rawImage.gameObject.SetActive(false);
+
+        if (rawImageParent.gameObject.activeSelf)
+            rawImageParent.gameObject.SetActive(false);
+
+    }
+
     private void SpawnCloth(string serial)
     {
         if (!clothMap.ContainsKey(serial))
@@ -115,23 +170,17 @@ public class QRCodeScanner : MonoBehaviour
             return;
         }
 
-        // Instantiate bigger and place it at the clothSpawnPoint
-        GameObject spawned = Instantiate(clothPrefab);
+        // Spawn the cloth at the spawn point, parented under clothParent
+        GameObject spawned = Instantiate(clothPrefab, clothSpawnPoint.position, clothSpawnPoint.rotation);
 
-        // If you have a dedicated transform to position it:
-        if (clothSpawnPoint)
+        // Parent it under clothParent if it's set
+        if (clothParent != null)
         {
-            spawned.transform.position = clothSpawnPoint.position;
-            spawned.transform.rotation = clothSpawnPoint.rotation;
-        }
-        else
-        {
-            // fallback if no clothSpawnPoint is set
-            spawned.transform.position = new Vector3(0f, 0f, 1f);
+            spawned.transform.SetParent(clothParent);
         }
 
-        // Make it bigger
-        spawned.transform.localScale = spawned.transform.localScale * clothScaleFactor;
+        // Scale it up
+        spawned.transform.localScale *= clothScaleFactor;
 
         Debug.Log("Spawned cloth: " + serial);
     }

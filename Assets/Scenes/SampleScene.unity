@@ -2943,21 +2943,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2044754245}
-        m_TargetAssemblyTypeName: ShowObjectAfterDelay, Assembly-CSharp
-        m_MethodName: OnButtonClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1883306877}
-        m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
-        m_MethodName: SwitchSceneWithDelay
+      - m_Target: {fileID: 1268126561}
+        m_TargetAssemblyTypeName: UserLogin, Assembly-CSharp
+        m_MethodName: OnLoginButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4580,7 +4568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &820831350
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4595,6 +4583,7 @@ RectTransform:
   m_Children:
   - {fileID: 1449303205}
   - {fileID: 1204763495}
+  - {fileID: 1327212339}
   - {fileID: 1364622231}
   - {fileID: 125579928}
   - {fileID: 214003271}
@@ -4623,13 +4612,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 820831349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 813fc8b148c94404098bfb3d602d5514, type: 3}
+  m_Script: {fileID: 11500000, guid: e84d445037070415c88a03ace3a71e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameInputField: {fileID: 0}
-  emailInputField: {fileID: 0}
-  passwordInputField: {fileID: 0}
-  signUpButton: {fileID: 0}
+  emailField: {fileID: 1357605812}
+  passwordField: {fileID: 660652997}
+  registerButton: {fileID: 487086897}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -6229,7 +6217,8 @@ MonoBehaviour:
   emailInput: {fileID: 1357605812}
   passwordInput: {fileID: 660652997}
   loginSuccessMessage: {fileID: 1204763494}
-  loginFailureMessage: {fileID: 0}
+  loginFailureMessage: {fileID: 1327212334}
+  sceneSwitcher: {fileID: 1883306877}
 --- !u!1 &1315448322
 GameObject:
   m_ObjectHideFlags: 0
@@ -6366,6 +6355,115 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315448322}
   m_CullTransparentMesh: 1
+--- !u!1 &1327212334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1327212339}
+  - component: {fileID: 1327212338}
+  - component: {fileID: 1327212337}
+  - component: {fileID: 1327212336}
+  - component: {fileID: 1327212335}
+  m_Layer: 5
+  m_Name: Login notSucess
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1327212335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327212334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df68f36f9e0b4408fa8d14d76cdc02e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 1327212339}
+  duration: 0.25
+  startScale: {x: 0, y: 0, z: 0}
+  endScale: {x: 5.05271, y: 1.36239, z: 2.6577}
+--- !u!114 &1327212336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327212334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df68f36f9e0b4408fa8d14d76cdc02e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 1327212339}
+  duration: 0.25
+  startScale: {x: 0, y: 0, z: 0}
+  endScale: {x: 5.052713, y: 1.362389, z: 2.657697}
+--- !u!114 &1327212337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327212334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 1880855075, guid: 64ba3876a200a4dc7a925932e9f8b621, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1327212338
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327212334}
+  m_CullTransparentMesh: 1
+--- !u!224 &1327212339
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327212334}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5.05271, y: 1.3623899, z: 2.6576998}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 820831350}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -4.9208984, y: 1035.5483}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1357605810
 GameObject:
   m_ObjectHideFlags: 0
@@ -8838,6 +8936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: AR_Session
   delay: 5
+  LoginUnsuccesfull: {fileID: 0}
 --- !u!1 &1658436893
 GameObject:
   m_ObjectHideFlags: 0
@@ -9492,6 +9591,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: Features
   delay: 5
+  LoginUnsuccesfull: {fileID: 0}
 --- !u!1 &1907671196
 GameObject:
   m_ObjectHideFlags: 0
@@ -9840,7 +9940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2023608269
 RectTransform:
   m_ObjectHideFlags: 0

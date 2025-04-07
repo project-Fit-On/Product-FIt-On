@@ -11,6 +11,9 @@ public class UserLogin : MonoBehaviour
     public GameObject loginSuccessMessage;
     public GameObject loginFailureMessage;
 
+    [Header("Scene Switcher")]
+    public SceneSwitcher sceneSwitcher;  // Assign your SceneSwitcher component here
+
     public void OnLoginButtonClicked()
     {
         string email = emailInput.text.Trim();
@@ -37,19 +40,25 @@ public class UserLogin : MonoBehaviour
                     FirebaseUser user = task.Result.User;
                     Debug.Log("Login successful! User ID: " + user.UserId);
                     ShowSuccess();
+
+                    // Now switch scene only on success
+                    if (sceneSwitcher != null)
+                    {
+                        sceneSwitcher.SwitchSceneWithDelay();
+                    }
                 }
             });
     }
 
     void ShowSuccess()
     {
-        loginSuccessMessage.SetActive(true);
-        loginFailureMessage.SetActive(false);
+        if (loginSuccessMessage != null) loginSuccessMessage.SetActive(true);
+        if (loginFailureMessage != null) loginFailureMessage.SetActive(false);
     }
 
     void ShowFailure()
     {
-        loginFailureMessage.SetActive(true);
-        loginSuccessMessage.SetActive(false);
+        if (loginFailureMessage != null) loginFailureMessage.SetActive(true);
+        if (loginSuccessMessage != null) loginSuccessMessage.SetActive(false);
     }
 }

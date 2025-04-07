@@ -4,17 +4,19 @@ using Dummiesman;  // Make sure you have the Dummiesman OBJ importer in your pro
 
 public class ModelDisplayManager : MonoBehaviour
 {
+    [Header("OBJ File")]
     [SerializeField] private string localObjFilename = "optimized_model.obj";
 
-    // Position & scale for your model
-    private Vector3 modelPosition = new Vector3(0f, -1.6f, 5.8f);
-    private Vector3 modelScale = Vector3.one;
+    [Header("Transform Settings")]
+    [SerializeField] private Vector3 modelPosition = new Vector3(0f, -1.1f, -2313f);
+    [SerializeField] private Vector3 modelScale = Vector3.one;
+    [SerializeField] private Vector3 initialModelRotation = new Vector3(0f, 180f, 0f);
 
-    // Set the initial rotation to 180° on the Y axis
-    private Vector3 initialModelRotation = new Vector3(0f, 180f, 0f);
-
-    // How fast to continuously spin around Y-axis (degrees per second)
+    [Header("Spin Settings")]
     [SerializeField] private float constantSpinSpeed = 20f;
+
+    [Header("Model Management")]
+    public Transform modelParent; // Assign this to a container GameObject in your scene
 
     private GameObject loadedModel;
 
@@ -34,9 +36,15 @@ public class ModelDisplayManager : MonoBehaviour
 
         if (loadedModel != null)
         {
-            // 3) Position / rotate / scale
-            loadedModel.transform.position = modelPosition;
-            loadedModel.transform.rotation = Quaternion.Euler(initialModelRotation);
+            // 3) Parent it under the model container if specified
+            if (modelParent != null)
+            {
+                loadedModel.transform.SetParent(modelParent);
+            }
+
+            // 4) Position / rotate / scale (relative to parent if set)
+            loadedModel.transform.localPosition = modelPosition;
+            loadedModel.transform.localRotation = Quaternion.Euler(initialModelRotation);
             loadedModel.transform.localScale = modelScale;
 
             Debug.Log("Model loaded and positioned successfully!");
@@ -49,7 +57,7 @@ public class ModelDisplayManager : MonoBehaviour
 
     private void Update()
     {
-        // 4) Constant rotation around the Y-axis
+        // 5) Constant rotation around the Y-axis
         if (loadedModel != null)
         {
             loadedModel.transform.Rotate(Vector3.up, constantSpinSpeed * Time.deltaTime, Space.World);
