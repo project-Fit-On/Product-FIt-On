@@ -1,66 +1,87 @@
 using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
 using UnityEngine.Networking;
-using Newtonsoft.Json.Linq;
+using TMPro;
+using System.Collections;
+using SimpleJSON; // if you're using SimpleJSON
 
 public class WeatherManager : MonoBehaviour
 {
-    private string apiKey = "515dd7c6cc066a1f8863efc613afd5b0"; // Replace with your OpenWeatherMap API Key
-    private string city = "Colombo";  // Change to user's location
-    private string apiUrl = "https://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}&units=metric";
+    [Header("UI References")]
+    public TMP_Dropdown districtDropdown;  // The dropdown for districts
+    public TMP_Text weatherText;           // Display weather info here
 
-    public Text cityText;
-    public Text temperatureText;
-    public Text weatherConditionText;
-    public Image weatherIcon;
+    // Replace with your actual OpenWeatherMap (or another service) API key
+    private string apiKey = "af3256594a289252394b0ee57a53e693";
 
+    // We'll keep the weather result in a string
+    private string currentWeatherString = "";
+
+    // Called when the object is enabled (or the scene is loaded)
     private void Start()
     {
-        StartCoroutine(GetWeatherData());
+        // Optional: set a default text
+        weatherText.text = "Select a district, then click Get Weather";
     }
 
-    IEnumerator GetWeatherData()
+    // Called when the user clicks the "Get Weather" button (assign this in the Inspector)
+    public void OnGetWeatherButtonClicked()
     {
-        string url = string.Format(apiUrl, city, apiKey);
+        // Find out which district was selected in the dropdown
+        string selectedDistrict = districtDropdown.options[districtDropdown.value].text;
+
+        // Kick off the weather fetch
+        StartCoroutine(FetchWeather(selectedDistrict));
+    }
+
+    private IEnumerator FetchWeather(string district)
+    {
+        // Construct the URL for current weather from OpenWeatherMap
+        // "LK" as the country code for Sri Lanka
+        string url = $"https://api.openweathermap.org/data/2.5/weather?q={district},LK&units=metric&appid={apiKey}";
+
+        // Send the GET request
         using (UnityWebRequest request = UnityWebRequest.Get(url))
         {
             yield return request.SendWebRequest();
 
-            if (request.result == UnityWebRequest.Result.Success)
+            if (request.result != UnityWebRequest.Result.Success)
             {
-                JObject json = JObject.Parse(request.downloadHandler.text);
-
-                string weatherCondition = json["weather"][0]["main"].ToString();
-                float temperature = float.Parse(json["main"]["temp"].ToString());
-
-                cityText.text = "City: " + city;
-                temperatureText.text = "Temperature: " + temperature + "°C";
-                weatherConditionText.text = "Condition: " + weatherCondition;
-
-                // Change icon based on condition
-                string icon = json["weather"][0]["icon"].ToString();
-                StartCoroutine(LoadWeatherIcon(icon));
+                Debug.LogError("Error fetching weather: " + request.error);
+                currentWeatherString = "Weather Error!";
             }
             else
             {
-                Debug.LogError("Failed to fetch weather data: " + request.error);
-            }
-        }
-    }
+                // Parse the JSON
+                string jsonResult = request.downloadHandler.text;
+                Debug.Log("Weather JSON: " + jsonResult);
 
-    IEnumerator LoadWeatherIcon(string iconCode)
-    {
-        string iconUrl = $"https://openweathermap.org/img/wn/{iconCode}@2x.png";
-        using (UnityWebRequest request = UnityWebRequestTexture.GetTexture(iconUrl))
-        {
-            yield return request.SendWebRequest();
-            if (request.result == UnityWebRequest.Result.Success)
-            {
-                Texture2D texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
-                weatherIcon.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+                // If using SimpleJSON
+                var data = JSON.Parse(jsonResult);
+
+                // Example: main weather condition is data["weather"][0]["main"] ("Clear", "Clouds", "Rain", etc.)
+                string weatherMain = data["weather"][0]["main"];
+                // A more descriptive text might be data["weather"][0]["description"]
+
+                // Simple interpretation of a few possible values
+                switch (weatherMain)
+                {
+                    case "Clear":
+                        currentWeatherString = "It's sunny!";
+                        break;
+                    case "Clouds":
+                        currentWeatherString = "It's cloudy!";
+                        break;
+                    case "Rain":
+                        currentWeatherString = "It's raining!";
+                        break;
+                    default:
+                        currentWeatherString = $"Weather: {weatherMain}";
+                        break;
+                }
             }
         }
+
+        // Update your UI text with the result
+        weatherText.text = currentWeatherString;
     }
 }
-
