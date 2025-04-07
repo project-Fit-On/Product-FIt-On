@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0154117e-56c6-4313-b666-ccf46ea062eb" name="Changes" comment="Changes in Uploading side view photo.">
+    <list default="true" id="0154117e-56c6-4313-b666-ccf46ea062eb" name="Changes" comment="Minor changes">
+      <change beforePath="$PROJECT_DIR$/.idea/imageProcessing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/imageProcessing.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +25,8 @@
   <component name="Git.Settings">
     <option name="PUSH_TAGS">
       <GitPushTagMode>
-        <option name="argument" value="--tags" />
-        <option name="title" value="All" />
+        <option name="argument" value="--follow-tags" />
+        <option name="title" value="Current Branch" />
       </GitPushTagMode>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,12 +59,14 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Python.ModelCreation.executor&quot;: &quot;Run&quot;,
     &quot;Python.camera_specs.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;Python.server.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_server.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;imageProcessing&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/senir/PycharmProjects/imageProcessing&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
@@ -79,6 +84,7 @@
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="imageProcessing" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -227,47 +233,55 @@
       <option name="project" value="LOCAL" />
       <updated>1741291027940</updated>
     </task>
-    <task id="LOCAL-00015" summary="Add A new method to get focal data">
+    <task id="LOCAL-00015" summary="Changes in camera specs">
       <option name="closed" value="true" />
-      <created>1743883148154</created>
+      <created>1742375838189</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1743883148154</updated>
+      <updated>1742375838189</updated>
     </task>
-    <task id="LOCAL-00016" summary="Minor changes in main">
+    <task id="LOCAL-00016" summary="Changes in camera specs">
       <option name="closed" value="true" />
-      <created>1743883350080</created>
+      <created>1742375881874</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1743883350080</updated>
+      <updated>1742375881874</updated>
     </task>
-    <task id="LOCAL-00017" summary="Minor changes in main">
+    <task id="LOCAL-00017" summary="Changes in camera specs">
       <option name="closed" value="true" />
-      <created>1743883447825</created>
+      <created>1742375982994</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1743883447825</updated>
+      <updated>1742375982994</updated>
     </task>
-    <task id="LOCAL-00018" summary="Changes in Uploading side view photo.">
+    <task id="LOCAL-00018" summary="Changes in Uploading Gender">
       <option name="closed" value="true" />
-      <created>1743933396598</created>
+      <created>1742646851996</created>
       <option name="number" value="00018" />
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
-      <updated>1743933396598</updated>
+      <updated>1742646851996</updated>
     </task>
-    <task id="LOCAL-00019" summary="Changes in Uploading side view photo.">
+    <task id="LOCAL-00019" summary="Minor changes">
       <option name="closed" value="true" />
-      <created>1743963881363</created>
+      <created>1743832208279</created>
       <option name="number" value="00019" />
       <option name="presentableId" value="LOCAL-00019" />
       <option name="project" value="LOCAL" />
-      <updated>1743963881363</updated>
+      <updated>1743832208279</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Minor changes">
+      <option name="closed" value="true" />
+      <created>1743832272675</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1743832272675</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -277,9 +291,9 @@
     <MESSAGE value="Implemented a local server" />
     <MESSAGE value="Major changes in the local server" />
     <MESSAGE value="Minor Changes" />
-    <MESSAGE value="Add A new method to get focal data" />
-    <MESSAGE value="Minor changes in main" />
-    <MESSAGE value="Changes in Uploading side view photo." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes in Uploading side view photo." />
+    <MESSAGE value="Changes in camera specs" />
+    <MESSAGE value="Changes in Uploading Gender" />
+    <MESSAGE value="Minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor changes" />
   </component>
 </project>

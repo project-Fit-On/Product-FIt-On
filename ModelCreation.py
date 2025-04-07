@@ -6,7 +6,7 @@ import cv2
 from face_analysis import estimate_distance_from_eyes
 from pose_analysis import measure_front_view, measure_side_view
 
-Gender = 'male'
+Gender = 'Male'
 def setGender(gender):
     global Gender
     Gender = gender
@@ -53,7 +53,7 @@ def modelCreation():
         body_data = json.load(file)
 
         # Load the human model using Trimesh
-        if body_data["gender"] == "male":
+        if body_data["gender"] == "Male":
             model_path = "DefaultModel/Male.obj"  # Use OBJ format
         else:
             model_path = "DefaultModel/Female.obj"
