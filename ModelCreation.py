@@ -59,7 +59,7 @@ def modelCreation():
 
         try:
             mesh = trimesh.load_mesh(model_path)
-            print(f" Successfully loaded model: {model_path}")
+            print(f" Successfully loaded {Gender}model: {model_path}")
         except Exception as e:
             print(f" Error loading model: {e}")
             return
@@ -79,6 +79,6 @@ def modelCreation():
         # Export the adjusted model
         export_path = "exports/optimized_model.obj"
         mesh.export(export_path)
-        print(f" Model exported to {export_path}")
+        print(f" {Gender}Model exported to {export_path}")
 
     print(" Model updated successfully based on JSON values.")
