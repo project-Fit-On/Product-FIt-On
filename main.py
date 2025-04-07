@@ -58,6 +58,7 @@ class GenderPayload(BaseModel):
 @app.post("/upload/gender")
 async def upload_gender(payload: GenderPayload):
     print("POST request received on /upload")
+    print(f'Gender : {payload.gender}')
     setGender(payload.gender)
     return {"message": "Gender uploaded successfully", "Gender": payload.gender}
 
