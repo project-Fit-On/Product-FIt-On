@@ -298,6 +298,7 @@ RectTransform:
   - {fileID: 2023608269}
   - {fileID: 1607844648}
   - {fileID: 820831350}
+  - {fileID: 1452635960}
   - {fileID: 752775518}
   - {fileID: 554533891}
   - {fileID: 1401359470}
@@ -6855,10 +6856,10 @@ MonoBehaviour:
   m_MultiSelect: 0
   m_Options:
     m_Options:
-    - m_Text: Male
+    - m_Text: male
       m_Image: {fileID: 0}
       m_Color: {r: 0.8117647, g: 0.7882353, b: 1, a: 1}
-    - m_Text: Female
+    - m_Text: female
       m_Image: {fileID: 0}
       m_Color: {r: 0.8117647, g: 0.7882353, b: 1, a: 1}
   m_OnValueChanged:
@@ -7302,6 +7303,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449303204}
   m_CullTransparentMesh: 1
+--- !u!1 &1452635959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1452635960}
+  - component: {fileID: 1452635961}
+  m_Layer: 5
+  m_Name: GenderUpload
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1452635960
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452635959}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 111609492}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 86}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1452635961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452635959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee71de5915464e8786f9967a5ab1a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  genderDropdown: {fileID: 1395790265}
+  uploadGenderUrl: 'https://fit-on-3d-115648783380.us-central1.run.app/upload/gender '
 --- !u!1 &1469616728
 GameObject:
   m_ObjectHideFlags: 0
@@ -8256,6 +8307,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1651348352}
         m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
         m_MethodName: SwitchSceneWithDelay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1452635961}
+        m_TargetAssemblyTypeName: GenderUploader, Assembly-CSharp
+        m_MethodName: OnUploadGenderButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9791,7 +9854,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Male
+  m_text: male
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
