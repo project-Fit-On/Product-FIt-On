@@ -1,7 +1,7 @@
 import os
 import shutil
 import uvicorn
-from fastapi import FastAPI, File, UploadFile, HTTPException, Form, Body
+from fastapi import FastAPI, File, UploadFile, HTTPException
 from pathlib import Path
 from starlette.responses import FileResponse
 from ModelCreation import modelCreation
