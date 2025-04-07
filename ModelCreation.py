@@ -13,7 +13,6 @@ def setGender(gender):
 
 def modelCreation():
     # Load images
-
     front_image = cv2.imread(r"uploads/front_view.jpg")
     side_image = cv2.imread(r"uploads/side_view.jpg")
 
@@ -68,7 +67,10 @@ def modelCreation():
         # Apply transformations based on measurements
         default_height = 1.75
         if body_data["height_m"]:
-            height_factor = body_data["height_m"] / default_height
+            if body_data["height_m"]>1:
+                height_factor = body_data["height_m"] / default_height
+            else:
+                height_factor = 1.75
         else:
             height_factor = 1.75
 
