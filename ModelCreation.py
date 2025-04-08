@@ -50,7 +50,7 @@ def modelCreation():
         body_data = json.load(file)
 
         # Load the human model using Trimesh
-        if body_data["gender"] == "Male":
+        if Gender == "Male":
             model_path = "DefaultModel/Male.obj"  # Use OBJ format
         else:
             model_path = "DefaultModel/Female.obj"
