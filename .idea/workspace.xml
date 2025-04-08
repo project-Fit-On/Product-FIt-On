@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0154117e-56c6-4313-b666-ccf46ea062eb" name="Changes" comment="Changes in Main" />
+    <list default="true" id="0154117e-56c6-4313-b666-ccf46ea062eb" name="Changes" comment="Changes in Height factor">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exports/optimized_model.obj" beforeDir="false" afterPath="$PROJECT_DIR$/exports/optimized_model.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/measurements.json" beforeDir="false" afterPath="$PROJECT_DIR$/measurements.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -316,7 +320,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744026647917</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Changes in Height factor">
+      <option name="closed" value="true" />
+      <created>1744087424731</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1744087424731</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -333,6 +345,7 @@
     <MESSAGE value="Changes in creating  the scale." />
     <MESSAGE value="Changes in Model Creation." />
     <MESSAGE value="Changes in Main" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes in Main" />
+    <MESSAGE value="Changes in Height factor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes in Height factor" />
   </component>
 </project>
