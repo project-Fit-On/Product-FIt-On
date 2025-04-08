@@ -68,9 +68,9 @@ def modelCreation():
             if body_data["height_m"]>1:
                 height_factor = body_data["height_m"] / default_height
             else:
-                height_factor = 1.75
+                height_factor = 1
         else:
-            height_factor = 1.75
+            height_factor = 1
 
         mesh.apply_scale(height_factor)
 
